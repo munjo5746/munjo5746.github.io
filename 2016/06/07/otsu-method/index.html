@@ -88,9 +88,12 @@
   width : 30em;
 }
 
-
 What is it?
-Otsu’s Method is one of image thresholding algorithm in computer vision. One assumption that the algorithm requires is that the given image ha">
+
+
+otsu_method
+
+Otsu’s Method is one of image thresholding algorithm in computer vision. One assumption that the algorithm requires is that the">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Otsu's method">
 <meta property="og:url" content="http://http://munjo5746.github.io/2016/06/07/otsu-method/index.html">
@@ -99,9 +102,12 @@ Otsu’s Method is one of image thresholding algorithm in computer vision. One a
   width : 30em;
 }
 
-
 What is it?
-Otsu’s Method is one of image thresholding algorithm in computer vision. One assumption that the algorithm requires is that the given image ha">
+
+
+otsu_method
+
+Otsu’s Method is one of image thresholding algorithm in computer vision. One assumption that the algorithm requires is that the">
 <meta property="og:image" content="http://http://munjo5746.github.io/images/otsu_method/fig1.jpg">
 <meta property="og:updated_time" content="2017-01-25T15:54:17.000Z">
 <meta name="twitter:card" content="summary">
@@ -110,9 +116,12 @@ Otsu’s Method is one of image thresholding algorithm in computer vision. One a
   width : 30em;
 }
 
-
 What is it?
-Otsu’s Method is one of image thresholding algorithm in computer vision. One assumption that the algorithm requires is that the given image ha">
+
+
+otsu_method
+
+Otsu’s Method is one of image thresholding algorithm in computer vision. One assumption that the algorithm requires is that the">
 <meta name="twitter:image" content="http://http://munjo5746.github.io/images/otsu_method/fig1.jpg">
 
 
@@ -143,6 +152,12 @@ Otsu’s Method is one of image thresholding algorithm in computer vision. One a
 
   <link rel="canonical" href="http://http://munjo5746.github.io/2016/06/07/otsu-method/"/>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
 
 
 
@@ -362,37 +377,40 @@ img[alt="otsu_method"] {
   width : 30em;
 }
 </style>
-
-<h1 id="What-is-it"><a href="#What-is-it" class="headerlink" title="What is it?"></a>What is it?</h1><p><img src="/images/otsu_method/fig1.jpg" alt="otsu_method"></p>
+<h1 id="what-is-it">What is it?</h1>
+<div class="figure">
+<img src="/images/otsu_method/fig1.jpg" alt="otsu_method">
+<p class="caption">otsu_method</p>
+</div>
 <p><a href="https://en.wikipedia.org/wiki/Otsu%27s_method" target="_blank" rel="external">Otsu’s Method</a> is one of image thresholding algorithm in computer vision. One assumption that the algorithm requires is that the given image has two separated groups of pixel intensities (foreground and background). Given this condition on the input image, the algorithm tries to find the optimal pixel intensity that clearly separates this two groups. The implementation of the algorithm can be found <a href="https://github.com/munjo5746/algorithm/tree/master/OtsuThresholding" target="_blank" rel="external">here</a>.</p>
-<h1 id="Theory-behind-algorithm"><a href="#Theory-behind-algorithm" class="headerlink" title="Theory behind algorithm"></a>Theory behind algorithm</h1><p>Let</p>
-<ul>
-<li>the range of intensity value be $0$ ~ $L$.</li>
-<li>$C_i$ where $i \in \{0, 1\}$ be two classes for collection of pixel intensities divided by $t$ (Bi-modal assumption)</li>
-<li>$\omega_j$ where $j \in \{0, 1\}$ be the probability distribution of the pixel intensity within each class</li>
-<li>the variances of each class be $\sigma^2_i$, where $i \in \{0,1\}$</li>
-<li>$n_i$ the number of pixels that has intensity value $i$ and $N$ be the total number of pixels within image, $N=\sum_{i=0}^{L}n_i$.</li>
-</ul>
-<p>The goal is to find one pixel intensity (threshold) value $t_{opt}$ that clearly separates $C_{i}$ into two classes. In order to achieve this, we need a way to represent how far these two classes are separated. The further the two classes are separated the easier to find the optimal value $t_{opt}$. The Otsu’s paper uses discriminant criterion measures used in the discriminant analysis, and claims that the simplest formulation is :</p>
-<p>$$<br>  \eta = \frac{\sigma_B^2}{\sigma_T^2}<br>$$</p>
-<p>where inter-class variance (how far between each class is) be<br><span>$$\begin{aligned}
+<h1 id="theory-behind-algorithm">Theory behind algorithm</h1>
+<p>Let - the range of intensity value be <span class="math inline">\(0\)</span> ~ <span class="math inline">\(L\)</span>. - <span class="math inline">\(C_i\)</span> where <span class="math inline">\(i \in \\{0, 1\\}\)</span> be two classes for collection of pixel intensities divided by <span class="math inline">\(t\)</span> (Bi-modal assumption) - <span class="math inline">\(\omega_j\)</span> where <span class="math inline">\(j \in \\{0, 1\\}\)</span> be the probability distribution of the pixel intensity within each class - the variances of each class be <span class="math inline">\(\sigma^2_i\)</span>, where <span class="math inline">\(i \in \\{0,1\\}\)</span> - <span class="math inline">\(n\_i\)</span> the number of pixels that has intensity value <span class="math inline">\(i\)</span> and <span class="math inline">\(N\)</span> be the total number of pixels within image, <span class="math inline">\(N=\sum_{i=0}^{L}n_i\)</span>.</p>
+<p>The goal is to find one pixel intensity (threshold) value <span class="math inline">\(t\_{opt}\)</span> that clearly separates <span class="math inline">\(C\_{i}\)</span> into two classes. In order to achieve this, we need a way to represent how far these two classes are separated. The further the two classes are separated the easier to find the optimal value <span class="math inline">\(t\_{opt}\)</span>. The Otsu’s paper uses discriminant criterion measures used in the discriminant analysis, and claims that the simplest formulation is :</p>
+<p><span class="math display">\[
+  \eta = \frac{\sigma_B^2}{\sigma_T^2}
+\]</span></p>
+<p>where inter-class variance (how far between each class is) be <span>$$\begin{aligned}
 \sigma_B^2 &amp; = \omega_0(\mu_0 - \mu_T)^2 + \omega_1(\mu_1 - \mu_T)^2 \\
            &amp; = \omega_0\omega_1(\mu_1 - \mu_0)^2
 \end{aligned}$$</span><!-- Has MathJax --></p>
 <p>and the total variance be</p>
-<p>$$<br>  \sigma_T^2 = \sum_{i=0}^{L} (i - \mu_T)^2 \cdot p_i<br>$$</p>
-<p>where $p_i$ be normalized probability of intensity $i$.</p>
-<p>The paper states that $\eta$ is function of intensity $t$ and finding the intensity $t$ will give the optimal threshold value $t_{opt}$.</p>
+<p><span class="math display">\[
+  \sigma\_T^2 = \sum_{i=0}^{L} (i - \mu\_T)^2 \cdot p\_i
+\]</span></p>
+<p>where <span class="math inline">\(p_i\)</span> be normalized probability of intensity <span class="math inline">\(i\)</span>.</p>
+<p>The paper states that <span class="math inline">\(\eta\)</span> is function of intensity <span class="math inline">\(t\)</span> and finding the intensity <span class="math inline">\(t\)</span> will give the optimal threshold value <span class="math inline">\(t\_{opt}\)</span>.</p>
 <hr>
-<p>Normalized probability distribution of pixel intensity within image would be :<br>$$<br>  p_i = \frac{n_i}{N}<br>$$</p>
-<p>where $p_i \geq 0$ and $\sum_{i=0}^{L} p_i = 1$.</p>
-<p>The class probabilities $\omega_j, j \in \{0, 1\}$ are defined as</p>
+<p>Normalized probability distribution of pixel intensity within image would be : <span class="math display">\[
+  p_i = \frac{n_i}{N}
+\]</span></p>
+<p>where <span class="math inline">\(p\_i \geq 0\)</span> and <span class="math inline">\(\sum\_{i=0}^{L} p\_i = 1\)</span>.</p>
+<p>The class probabilities <span class="math inline">\(\omega_j, j \in \\{0, 1\\}\)</span> are defined as</p>
 <span>$$\begin{aligned}
   \omega_0 &amp;= p_{C_0} = \sum_{i=0}^{t - 1} p_i = \omega(t) \\
   \omega_1 &amp;= p_{C_1} = \sum_{i=t}^{L} p_i = 1 - \omega(t)
 \end{aligned}$$</span><!-- Has MathJax -->
-<p>The above statement is valid because of <strong>Kolmogorov axioms (Third Axiom)</strong> which says $p\left(\bigcup_{e \in E} e\right) = \sum_{e \in E} p(e)$, and we assumed the probability $p_i$ is normalized.</p>
-<p>The mean  $\mu_i$ where $i \in \{0, 1\}$ of each class $C_i$ can be found as follows :</p>
+<p>The above statement is valid because of <strong>Kolmogorov axioms (Third Axiom)</strong> which says <span class="math inline">\(p\left(\bigcup\_{e \in E} e\right) = \sum\_{e \in E} p(e)\)</span>, and we assumed the probability <span class="math inline">\(p\_i\)</span> is normalized.</p>
+<p>The mean <span class="math inline">\(\mu_i\)</span> where <span class="math inline">\(i \in \\{0, 1\\}\)</span> of each class <span class="math inline">\(C_i\)</span> can be found as follows :</p>
 <span>$$\begin{aligned}
   \mu_0 &amp; = \sum_{i=0}^{t-1} i \cdot \frac{p_i}{\omega_0} = \frac{\mu(t)}{\omega(t)} \\
   \mu_1 &amp; = \sum_{i=t}^{L} i\cdot\frac{p_i}{\omega_1} = \frac{\mu_T - \mu(t)}{1 - \omega(t)}
@@ -408,22 +426,19 @@ img[alt="otsu_method"] {
   \sigma_0^2(t) &amp; = \sum_{i=0}^{t-1} [i - \mu_0]^2 \cdot \frac{p_i}{\omega_0} \\
   \sigma_1^2(t) &amp; = \sum_{i=t}^{L} [i - \mu_1]^2 \cdot \frac{p_i}{\omega_1}
 \end{aligned}$$</span><!-- Has MathJax -->
-<p>The goal is to find $t_{opt}$ that maximize $\eta$. There are few things that we need to keep in mind.</p>
-<ul>
-<li>The variance $\sigma_B^2$ is function of $t$, so is the function $\eta$.</li>
-<li>The function $\eta$ increases as $\sigma_B^2$ increases.</li>
-</ul>
-<p>Then, we have $\eta(t) = \frac{\sigma_B^2(t)}{\sigma_T^2}$, and $\sigma_B^2(t)$ can be formulated as follow :</p>
+<p>The goal is to find <span class="math inline">\(t\_{opt}\)</span> that maximize <span class="math inline">\(\eta\)</span>. There are few things that we need to keep in mind. - The variance <span class="math inline">\(\sigma\_B^2\)</span> is function of <span class="math inline">\(t\)</span>, so is the function <span class="math inline">\(\eta\)</span>. - The function <span class="math inline">\(\eta\)</span> increases as <span class="math inline">\(\sigma\_B^2\)</span> increases.</p>
+<p>Then, we have <span class="math inline">\(\eta(t) = \frac{\sigma\_B^2(t)}{\sigma\_T^2}\)</span>, and <span class="math inline">\(\sigma\_B^2(t)\)</span> can be formulated as follow :</p>
 <span>$$\begin{aligned}
 \sigma_B^2(t) &amp;= \omega_0 \omega_1(\mu_1-\mu_0)^2 \\\\
 &amp;= \left[\omega(t) \cdot (1-\omega(t))\right] \cdot \left[\frac{\mu_T \cdot \omega(t)-\mu(t)}{\left[(1-\omega(t)) \cdot \omega(t)\right]}\right]^2 \\
 &amp;=\frac{\left[ \mu_T \cdot \omega(t) - \mu(t) \right]^2}{(1-\omega(t)) \cdot \omega(t)}
 \end{aligned}$$</span><!-- Has MathJax -->
-<p>Since $\eta(t)$ increases as $\sigma_B^2(t)$ increases, we only have to find $t_{opt}$ such that</p>
+<p>Since <span class="math inline">\(\eta(t)\)</span> increases as <span class="math inline">\(\sigma\_B^2(t)\)</span> increases, we only have to find <span class="math inline">\(t\_{opt}\)</span> such that</p>
 <span>$$\begin{aligned}
 t_{opt} = \operatorname{arg\ max}_{0 \leq t \leq L} \sigma_B(t)
 \end{aligned}$$</span><!-- Has MathJax -->
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<h1 id="references">References</h1>
+<ul>
 <li><a href="https://en.wikipedia.org/wiki/Probability_axioms" target="_blank" rel="external">Kolmogorov axioms</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Otsu%27s_method" target="_blank" rel="external">Wikipedia</a></li>
 <li><a href="http://darkpgmr.tistory.com/115" target="_blank" rel="external">다크 프로그래머</a></li>
@@ -622,7 +637,7 @@ t_{opt} = \operatorname{arg\ max}_{0 \leq t \leq L} \sigma_B(t)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-it"><span class="nav-number">1.</span> <span class="nav-text">What is it?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Theory-behind-algorithm"><span class="nav-number">2.</span> <span class="nav-text">Theory behind algorithm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-it"><span class="nav-number">1.</span> <span class="nav-text">What is it?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#theory-behind-algorithm"><span class="nav-number">2.</span> <span class="nav-text">Theory behind algorithm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>

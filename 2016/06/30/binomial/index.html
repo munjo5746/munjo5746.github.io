@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Probability Theory,Mathematics,Algorithm,D3.js,Statistics,Javascript," />
+  <meta name="keywords" content="Probability Theory,Mathematics,D3.js,Javascript,Algorithm,Statistics," />
 
 
 
@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="Binomial DistributionThe Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter $n$ (# of indepe">
+<meta name="description" content="Binomial Distribution
+The Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter \(n\) (# of ind">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Binomial Distribution">
 <meta property="og:url" content="http://http://munjo5746.github.io/2016/06/30/binomial/index.html">
 <meta property="og:site_name" content="eChung's Note">
-<meta property="og:description" content="Binomial DistributionThe Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter $n$ (# of indepe">
+<meta property="og:description" content="Binomial Distribution
+The Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter \(n\) (# of ind">
 <meta property="og:updated_time" content="2017-01-25T17:10:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Binomial Distribution">
-<meta name="twitter:description" content="Binomial DistributionThe Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter $n$ (# of indepe">
+<meta name="twitter:description" content="Binomial Distribution
+The Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter \(n\) (# of ind">
 
 
 
@@ -123,6 +126,12 @@
 
   <link rel="canonical" href="http://http://munjo5746.github.io/2016/06/30/binomial/"/>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
 
 
 
@@ -337,19 +346,17 @@
       
 
       
-        <h1 id="Binomial-Distribution"><a href="#Binomial-Distribution" class="headerlink" title="Binomial Distribution"></a>Binomial Distribution</h1><p>The Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter $n$ (# of independent events) and $p$ (probability of each event). If some random variable $X$ has binomial distribution, we denote it as $X \sim B(n, p)$.</p>
-<h2 id="Probability-Mass-function"><a href="#Probability-Mass-function" class="headerlink" title="Probability Mass function"></a>Probability Mass function</h2><p>Let</p>
-<ul>
-<li>$n$ be the # of independent events</li>
-<li>$k$ be the # of successes in $n$ events</li>
-<li>$p$ be the probability of each event</li>
-</ul>
+        <h1 id="binomial-distribution">Binomial Distribution</h1>
+<p>The Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter <span class="math inline">\(n\)</span> (# of independent events) and <span class="math inline">\(p\)</span> (probability of each event). If some random variable <span class="math inline">\(X\)</span> has binomial distribution, we denote it as <span class="math inline">\(X \sim B(n, p)\)</span>.</p>
+<h2 id="probability-mass-function">Probability Mass function</h2>
+<p>Let - <span class="math inline">\(n\)</span> be the # of independent events - <span class="math inline">\(k\)</span> be the # of successes in <span class="math inline">\(n\)</span> events - <span class="math inline">\(p\)</span> be the probability of each event</p>
 <p>then, the probability mass function can be defined as</p>
 <span>$$\begin{align*}
   p(X = k) = { n \choose k } p^k (1-p)^{(n-k)}
 \end{align*}$$</span><!-- Has MathJax -->
-<p>where ${ n \choose k } = \frac{n!}{k!(n-k)!}$ is the binomial coefficient.</p>
-<h1 id="Binomial-Probability-in-Code"><a href="#Binomial-Probability-in-Code" class="headerlink" title="Binomial Probability in Code"></a>Binomial Probability in Code</h1>
+<p>where <span class="math inline">\({ n \choose k } = \frac{n!}{k!(n-k)!}\)</span> is the binomial coefficient.</p>
+<h1 id="binomial-probability-in-code">Binomial Probability in Code</h1>
+
   <style>
     .binomial-axis path,
     .binomial-axis {
@@ -537,20 +544,23 @@
   }
   </script>
 
-<p>The following graph is implemented in D3.js and plots the probability of $k$ number of successes in $n$ independent trials. The condition of variables $n$ and $k$ is that $n &gt;= k$ since there cannot be more successes than the total number of trials. Besides the actual code that draws the plots on the screen, there are parts required to calculate the probability.</p>
-<p>In order to find the Binomial probability, it is required to find the Binomial Coefficient which is defined as ${ n \choose k } = \frac{n!}{k!(n-k)!}$ is the binomial coefficient. This involves finding <em>factorial</em>.</p>
-<h2 id="Factorial"><a href="#Factorial" class="headerlink" title="Factorial"></a>Factorial</h2><p>The factorial is which is defined as<br><span>$$\begin{align*}
+<p>The following graph is implemented in D3.js and plots the probability of <span class="math inline">\(k\)</span> number of successes in <span class="math inline">\(n\)</span> independent trials. The condition of variables <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span> is that <span class="math inline">\(n &gt;= k\)</span> since there cannot be more successes than the total number of trials. Besides the actual code that draws the plots on the screen, there are parts required to calculate the probability.</p>
+<p>In order to find the Binomial probability, it is required to find the Binomial Coefficient which is defined as <span class="math inline">\({ n \choose k } = \frac{n!}{k!(n-k)!}\)</span> is the binomial coefficient. This involves finding <em>factorial</em>.</p>
+<h2 id="factorial">Factorial</h2>
+<p>The factorial is which is defined as <span>$$\begin{align*}
   n! &amp;= \prod_{i=1}^{n} i
 \end{align*}$$</span><!-- Has MathJax --></p>
-<p>and $0! = 1$. In code this can be calculated as below.</p>
+<p>and <span class="math inline">\(0! = 1\)</span>. In code this can be calculated as below.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(n === <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  <span class="keyword">var</span> result = <span class="number">1</span>;</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = n; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">    result *= i;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Binomial-Coefficient"><a href="#Binomial-Coefficient" class="headerlink" title="Binomial Coefficient"></a>Binomial Coefficient</h2><p>As stated above, the Binomial Coefficient is defined as follow.</p>
+<h2 id="binomial-coefficient">Binomial Coefficient</h2>
+<p>As stated above, the Binomial Coefficient is defined as follow.</p>
 <span>$$\begin{align*}
 { n \choose k } &amp;= \frac{n!}{k!(n-k)!}
 \end{align*}$$</span><!-- Has MathJax -->
 <p>Since we already have factorial in hands, this can be calculated easily.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">binomialCoefficient</span>(<span class="params">n, k</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> nFact = factorial(n);</div><div class="line">  <span class="keyword">var</span> kFact = factorial(k);</div><div class="line">  <span class="keyword">var</span> n_kFact = factorial(n - k);</div><div class="line">  <span class="keyword">return</span> (nFact/(kFact * n_kFact));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Binomial-Probability"><a href="#Binomial-Probability" class="headerlink" title="Binomial Probability"></a>Binomial Probability</h2><p>Once we have Factorial and Binomial Coefficient in hands, finding the Binomial Probability with parameters $n$ and $k$ is easy. Since the Binomial Probability is defined as follow :</p>
+<h2 id="binomial-probability">Binomial Probability</h2>
+<p>Once we have Factorial and Binomial Coefficient in hands, finding the Binomial Probability with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span> is easy. Since the Binomial Probability is defined as follow :</p>
 <span>$$\begin{align*}
   p(X = k) = { n \choose k } p^k (1-p)^{(n-k)}
 \end{align*}$$</span><!-- Has MathJax -->
@@ -583,13 +593,13 @@
           
             <a href="/tags/Mathematics/" rel="tag"># Mathematics</a>
           
-            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
-          
             <a href="/tags/D3-js/" rel="tag"># D3.js</a>
           
-            <a href="/tags/Statistics/" rel="tag"># Statistics</a>
-          
             <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+            <a href="/tags/Statistics/" rel="tag"># Statistics</a>
           
         </div>
       
@@ -753,7 +763,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Binomial-Distribution"><span class="nav-number">1.</span> <span class="nav-text">Binomial Distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Probability-Mass-function"><span class="nav-number">1.1.</span> <span class="nav-text">Probability Mass function</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Binomial-Probability-in-Code"><span class="nav-number">2.</span> <span class="nav-text">Binomial Probability in Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.1.</span> <span class="nav-text">Input</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Factorial"><span class="nav-number">2.1.</span> <span class="nav-text">Factorial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binomial-Coefficient"><span class="nav-number">2.2.</span> <span class="nav-text">Binomial Coefficient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binomial-Probability"><span class="nav-number">2.3.</span> <span class="nav-text">Binomial Probability</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#binomial-distribution"><span class="nav-number">1.</span> <span class="nav-text">Binomial Distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#probability-mass-function"><span class="nav-number">1.1.</span> <span class="nav-text">Probability Mass function</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#binomial-probability-in-code"><span class="nav-number">2.</span> <span class="nav-text">Binomial Probability in Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.1.</span> <span class="nav-text">Input</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#factorial"><span class="nav-number">2.1.</span> <span class="nav-text">Factorial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binomial-coefficient"><span class="nav-number">2.2.</span> <span class="nav-text">Binomial Coefficient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binomial-probability"><span class="nav-number">2.3.</span> <span class="nav-text">Binomial Probability</span></a></li></ol></li></ol></div>
             
 
           </div>

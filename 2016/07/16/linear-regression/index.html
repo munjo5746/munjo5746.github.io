@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Probability Theory,Mathematics,Algorithm,D3.js,Statistics," />
+  <meta name="keywords" content="Probability Theory,Mathematics,D3.js,Algorithm,Statistics," />
 
 
 
@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="Linear RegressionThe Linear Regression is a statistical approach to find the relationship within the data where the data consist of dependent variables $y_i$ and independent variables $\{ x_{i,k} \}_{">
+<meta name="description" content="Linear Regression
+The Linear Regression is a statistical approach to find the relationship within the data where the data consist of dependent variables \(y\_i\) and independent variables \(\\{ x\_{i,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linear Regression">
 <meta property="og:url" content="http://http://munjo5746.github.io/2016/07/16/linear-regression/index.html">
 <meta property="og:site_name" content="eChung's Note">
-<meta property="og:description" content="Linear RegressionThe Linear Regression is a statistical approach to find the relationship within the data where the data consist of dependent variables $y_i$ and independent variables $\{ x_{i,k} \}_{">
-<meta property="og:updated_time" content="2017-01-25T15:54:17.000Z">
+<meta property="og:description" content="Linear Regression
+The Linear Regression is a statistical approach to find the relationship within the data where the data consist of dependent variables \(y\_i\) and independent variables \(\\{ x\_{i,">
+<meta property="og:updated_time" content="2017-01-25T20:42:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linear Regression">
-<meta name="twitter:description" content="Linear RegressionThe Linear Regression is a statistical approach to find the relationship within the data where the data consist of dependent variables $y_i$ and independent variables $\{ x_{i,k} \}_{">
+<meta name="twitter:description" content="Linear Regression
+The Linear Regression is a statistical approach to find the relationship within the data where the data consist of dependent variables \(y\_i\) and independent variables \(\\{ x\_{i,">
 
 
 
@@ -123,6 +126,12 @@
 
   <link rel="canonical" href="http://http://munjo5746.github.io/2016/07/16/linear-regression/"/>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
 
 
 
@@ -337,7 +346,8 @@
       
 
       
-        <h1 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h1><p>The Linear Regression is a statistical approach to find the relationship within the data where the data consist of dependent variables $y_i$ and independent variables $\{ x_{i,k} \}_{k=1}^{L}$ with the dimension $L$. The most famous approach to fit the data set is called <strong>Least Square Method</strong> which finds the best fitted line to the data set.</p>
+        <h1 id="linear-regression">Linear Regression</h1>
+<p>The Linear Regression is a statistical approach to find the relationship within the data where the data consist of dependent variables <span class="math inline">\(y\_i\)</span> and independent variables <span class="math inline">\(\\{ x\_{i,k} \\}\_{k=1}^{L}\)</span> with the dimension <span class="math inline">\(L\)</span>. The most famous approach to fit the data set is called <strong>Least Square Method</strong> which finds the best fitted line to the data set.</p>
 
 <div id="regression-container"></div>
 
@@ -539,7 +549,6 @@
 
       var bottom = (a*d) - (b*c);
 
-      console.log(bottom);
       return bottom;
     }
 
@@ -658,12 +667,13 @@
 
 </script>
 
-<h2 id="Least-Square-Method"><a href="#Least-Square-Method" class="headerlink" title="Least Square Method"></a>Least Square Method</h2><p>The Least Square method is a way of finding the line that best fits the given data set. By saying best fitted line, we mean that the line that minimizes the distance(Error) between the line and each data point.</p>
-<p>Let the dimension be $L=1$, and assume that we have a data set ${ y_i, x_i}$ for $i \in \{1, 2, \ldots , D\}$. With the equation of a line $y = mx + b$ on hands, we may define the error function as follows:</p>
+<h2 id="least-square-method">Least Square Method</h2>
+<p>The Least Square method is a way of finding the line that best fits the given data set. By saying best fitted line, we mean that the line that minimizes the distance(Error) between the line and each data point.</p>
+<p>Let the dimension be <span class="math inline">\(L=1\)</span>, and assume that we have a data set <span class="math inline">\(\{ y\_i, x_i\}\)</span> for <span class="math inline">\(i \in \\{1, 2, \ldots , D\\}\)</span>. With the equation of a line <span class="math inline">\(y = mx + b\)</span> on hands, we may define the error function as follows:</p>
 <span>$$\begin{equation*}
 E(m, b) = \sum_{i = 1}^{D} \left[ y_i - (mx_i + b) \right]^2
 \end{equation*}$$</span><!-- Has MathJax -->
-<p>In order to find the best fitted line with this error function, the focus comes down to find the parameters, the slope $m$ and the y-intercept $b$. In calculus, finding the critical points of a function can give us the points that minimizes the function. So setting the partial derivatives of the error functions equal to 0, we have:<br><span>$$\begin{align*}
+<p>In order to find the best fitted line with this error function, the focus comes down to find the parameters, the slope <span class="math inline">\(m\)</span> and the y-intercept <span class="math inline">\(b\)</span>. In calculus, finding the critical points of a function can give us the points that minimizes the function. So setting the partial derivatives of the error functions equal to 0, we have: <span>$$\begin{align*}
 \frac{\partial E(m,b)}{\partial m} &amp;= 2 \cdot \sum_{i=1}^{D} \left[ y_i - (mx_i + b) \right] \cdot (-x_i) \\
 &amp;= 0 \\
 \frac{\partial E(m,b)}{\partial b} &amp;= 2 \cdot \sum_{i=1}^{D} \left[ y_i - (mx_i + b) \right] \cdot (1) \\
@@ -674,11 +684,11 @@ E(m, b) = \sum_{i = 1}^{D} \left[ y_i - (mx_i + b) \right]^2
 &amp; 2 \cdot \sum_{i=1}^{D} \left[ y_i x_i - m x_i^2 - b x_i \right] = 0 \\
 \implies &amp; \sum_{i=1}^{D} m x_i^2 + \sum_{i=1}^{D} b x_i  = \sum_{i=1}^{D} y_i x_i \\
 \end{align*}$$</span><!-- Has MathJax -->
-<p>and<br><span>$$\begin{align*}
+<p>and <span>$$\begin{align*}
 &amp; 2 \cdot \sum_{i = 1}^{D} \left[ y_i - m x_i - b \right] = 0 \\
 \implies &amp; \sum_{i=1}^{D} m x_i + \sum_{i=1}^{D} b = \sum_{i=1}^{D} y_i
 \end{align*}$$</span><!-- Has MathJax --></p>
-<p>In matrix form, this can be re-rewritten as<br><span>$$\begin{bmatrix}
+<p>In matrix form, this can be re-rewritten as <span>$$\begin{bmatrix}
 \sum_{i=1}^{D} x_i^2 &amp; \sum_{i=1}^{D} x_i \\
 \sum_{i=1}^{D} x_i &amp; \sum_{i=1}^{D} 1
 \end{bmatrix}
@@ -695,7 +705,7 @@ b
  \sum_{i=1}^{D} y_i x_i \\
  \sum_{i=1}^{D} y_i
  \end{bmatrix}$$</span><!-- Has MathJax --></p>
-<p>Since the goal is to find the parameters $m$ and $b$, the above matrix equation can be solved by finding the inverse matrix as follow :<br><span>$$\begin{bmatrix}
+<p>Since the goal is to find the parameters <span class="math inline">\(m\)</span> and <span class="math inline">\(b\)</span>, the above matrix equation can be solved by finding the inverse matrix as follow : <span>$$\begin{bmatrix}
 m \\
 b
 \end{bmatrix}
@@ -711,7 +721,8 @@ b
 \sum_{i=1}^{D} y_i x_i \\
 \sum_{i=1}^{D} y_i
 \end{bmatrix}$$</span><!-- Has MathJax --></p>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<h1 id="references">References</h1>
+<ul>
 <li><a href="https://en.wikipedia.org/wiki/Least_squares" target="_blank" rel="external">Least Square - Wikipedia</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Linear_regression" target="_blank" rel="external">Linear Regression</a></li>
 <li><a href="https://web.williams.edu/Mathematics/sjmiller/public_html/BrownClasses/54/handouts/MethodLeastSquares.pdf" target="_blank" rel="external">Steven J. Miller</a></li>
@@ -743,9 +754,9 @@ b
           
             <a href="/tags/Mathematics/" rel="tag"># Mathematics</a>
           
-            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
-          
             <a href="/tags/D3-js/" rel="tag"># D3.js</a>
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
           
             <a href="/tags/Statistics/" rel="tag"># Statistics</a>
           
@@ -911,7 +922,7 @@ b
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linear-Regression"><span class="nav-number">1.</span> <span class="nav-text">Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Least-Square-Method"><span class="nav-number">1.1.</span> <span class="nav-text">Least Square Method</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linear-regression"><span class="nav-number">1.</span> <span class="nav-text">Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#least-square-method"><span class="nav-number">1.1.</span> <span class="nav-text">Least Square Method</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>
