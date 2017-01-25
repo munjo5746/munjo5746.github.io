@@ -1,0 +1,1147 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Probability Theory,Mathematics,Algorithm,D3.js,Statistics," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Gradient DescentLet’s assume that we have a function $f$ that the value of $f(x), x \in \text{dom}(f)$ needs to be minimized at some parameter $x$ in its domain. The Gradient Descent algorithm is an o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradient Descent">
+<meta property="og:url" content="http://http://munjo5746.github.io/2016/07/22/gradient-descent/index.html">
+<meta property="og:site_name" content="eChung's Note">
+<meta property="og:description" content="Gradient DescentLet’s assume that we have a function $f$ that the value of $f(x), x \in \text{dom}(f)$ needs to be minimized at some parameter $x$ in its domain. The Gradient Descent algorithm is an o">
+<meta property="og:updated_time" content="2017-01-25T17:11:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gradient Descent">
+<meta name="twitter:description" content="Gradient DescentLet’s assume that we have a function $f$ that the value of $f(x), x \in \text{dom}(f)$ needs to be minimized at some parameter $x$ in its domain. The Gradient Descent algorithm is an o">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://http://munjo5746.github.io/2016/07/22/gradient-descent/"/>
+
+
+
+
+
+  <title> Gradient Descent | eChung's Note </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">eChung's Note</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">CS & Math</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://http://munjo5746.github.io/2016/07/22/gradient-descent/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Edward Chung">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="eChung's Note">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="eChung's Note" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Gradient Descent
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-22T21:58:06-04:00">
+                2016-07-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h1><p>Let’s assume that we have a function $f$ that the value of $f(x), x \in \text{dom}(f)$ needs to be minimized at some parameter $x$ in its domain. The Gradient Descent algorithm is an optimization algorithm that finds this parameter $x$.</p>
+
+<style>
+.gd-container {
+  border : 1px solid lightgray;
+  width : 600px;
+}
+  .axis path,
+  .axis line {
+    fill : none;
+    stroke : gray;
+    stroke-width : 1;
+    shape-rendering: crispEdges;
+  }
+
+  .fit-line {
+    stroke : steelblue;
+    stroke-width : 2;
+  }
+
+  .tick line {
+    opacity : 0.3;
+  }
+</style>
+
+<div class="gd-container">
+  <div style="margin-left : 0.5em;">
+    <h2>
+      Gradient Descent
+    </h2>
+    <input type="button" value="Run" id="gd-run" onclick="run()">
+  </div>
+</div>
+
+<script>
+
+  var baseLine = function(x) {
+    return 5 * x + 10;
+  };
+
+  var gd_func = function(param, x) {
+    // param --> {newm : int, newb : int }
+    return param.m * x + param.b;
+  }
+
+  var learningRate = 0.00009;
+  var gd_data = generateData(baseLine, 60, 10, { min : 10, max : 70});
+
+  var padding = { left : 40, top : 40, right : 40, bottom : 40 };
+  var w = 300 - padding.left - padding.right;
+  var h = 300 - padding.bottom - padding.top;
+  var currentParamX = 0.5;
+  var currentParamY = 0.5;
+  var currentParamXMin = 0;
+  var currentParamYMin = 0;
+  var xMin = d3.min(gd_data, function(pt) {
+    return pt.x;
+  });
+  var xMax = d3.max(gd_data, function(pt) {
+    return pt.x;
+  });
+
+  var yMin = d3.min(gd_data, function(pt) {
+    return pt.y;
+  });
+  var yMax = d3.max(gd_data, function(pt) {
+    return pt.y;
+  });
+
+
+  var gd_svg = d3.select('.gd-container')
+              .append('svg')
+              .attr('width', w + (padding.left + padding.right))
+              .attr('height', h + (padding.bottom + padding.top));
+  gd_svg = gd_svg.append('g').attr('transform', 'translate(' + padding.left  + ', ' + 0 + ')');
+
+  var gd_fx = d3.scale.linear().domain([0, xMax]).range([padding.left, w - padding.right]);
+  var gd_fy = d3.scale.linear().domain([0, yMax]).range([h - padding.top, padding.bottom]);
+
+  var xAxis = d3.svg.axis()
+                .scale(gd_fx)
+                .ticks(3)
+                .innerTickSize(-(h - (padding.top + padding.bottom)))
+                .outerTickSize(0).orient('bottom');
+  var yAxis = d3.svg.axis()
+                .scale(gd_fy)
+                .ticks(3)
+                .innerTickSize(-(w - (padding.right + padding.left)))
+                .outerTickSize(0).orient('left');
+
+  gd_svg
+    .append('g')
+    .attr('class', 'axis x')
+    .attr('transform', 'translate(0, ' + (h - padding.bottom ) + ')')
+    .call(xAxis);
+
+  gd_svg
+    .append('g')
+    .attr('class', 'axis y')
+    .attr('transform', 'translate(' + padding.left + ', 0)')
+    .call(yAxis);
+
+
+  var gd_paramSVG = d3.select('.gd-container').append('svg').attr('width', w + (padding.left + padding.right)).attr('height', h + (padding.bottom + padding.top));
+  gd_paramSVG = gd_paramSVG.append('g').attr('transform', 'translate(' + padding.left +', ' + 0 + ')');
+
+  var paramFx = d3.scale.linear().domain([0, currentParamX]).range([padding.left, w - padding.right]);
+  var paramFy = d3.scale.linear().domain([0, currentParamY]).range([h - padding.top, padding.bottom]);
+  var paramXAxis = d3.svg.axis()
+                      .scale(paramFx)
+                      .ticks(3)
+                      .innerTickSize(-(h - (padding.top + padding.bottom)))
+                      .outerTickSize(0)
+                      .orient('bottom');
+  var paramYAxis = d3.svg.axis()
+                      .scale(paramFy)
+                      .ticks(3)
+                      .innerTickSize(-(w - (padding.left + padding.right)))
+                      .outerTickSize(0)
+                      .orient('left');
+
+
+  gd_paramSVG
+    .append('g')
+    .attr('transform', 'translate(0, ' + (h - (padding.bottom )) + ')')
+    .attr('class', 'axis paramX')
+    .call(paramXAxis);
+
+  gd_paramSVG
+    .append('g')
+    .attr('transform', 'translate(' + padding.left + ', 0)')
+    .attr('class', 'axis paramY')
+    .call(paramYAxis);
+
+
+
+  gd_svg
+    .append('text')
+    .attr('text-anchor', 'middle')
+    .attr('transform', 'translate(' + (padding.left/5) + ', ' + (h / 2) + ') rotate(-90)')
+    .text('y');
+  gd_svg
+    .append('text')
+    .attr('text-anchor', 'middle')
+    .attr('transform', 'translate(' + (w/2) + ', ' + (h) + ')')
+    .text('x');
+
+  gd_paramSVG
+    .append('text')
+    .attr('text-anchor', 'middle')
+    .attr('transform', 'translate(' + (padding.left/5) + ', ' + (h / 2) + ') rotate(-90)')
+    .text('y-intercept(b)');
+  gd_paramSVG
+    .append('text')
+    .attr('text-anchor', 'middle')
+    .attr('transform', 'translate(' + (w/2) + ', ' + (h) + ')')
+    .text('slope(m)');
+
+    render(gd_data);
+
+  function run() {
+    var cnt = 0;
+    var param = { m : Math.random(), b : Math.random() };
+    var params = [param];
+    var prev = null;
+    var prevVal = 0
+    var newVal = errorFunc(param, gd_data);
+    var intervalID = setInterval(function() {
+                    prev = param;
+                    param = updateGradient(param, learningRate, gd_data);
+                    params.push(param);
+
+                    if(cnt > 30 || param.m > 1000 || param.b > 1000) {
+                      clearInterval(intervalID);
+                      gd_svg
+                        .append('text')
+                        .attr('transform', 'translate(0,' + padding.top/2 + ')')
+                        .attr('fill', 'red')
+                        .text('Diverged');
+                    }
+
+
+                    updateBestFit(param);
+                    updateParamGraph(params);
+
+                    var finished = isFinished(prev, param, intervalID);
+                    prevVal = newVal;
+                    newVal = errorFunc(param, gd_data);
+                    if(newVal > prevVal) {
+                      // diverging
+                      learningRate = learningRate / 4;
+                    } else {
+                      // converging
+                      learningRate = learningRate * (3/2);
+                    }
+
+                    if(finished) {
+                      gd_paramSVG
+                        .append('circle')
+                        .attr('cx', paramFx(param.m))
+                        .attr('cy', paramFy(param.b))
+                        .style('fill', 'red')
+                        .attr('r', 3);
+                    }
+
+                    cnt++;
+                  }, 1500);
+  }
+
+
+
+
+
+
+  function updateParamGraph(params) {
+    var tmpXMin = d3.min(params, function(d) {
+      return d.m;
+    });
+    var tmpXMax = d3.max(params, function(d) {
+      return d.m;
+    });
+    var tmpYMin = d3.min(params, function(d) {
+      return d.b;
+    });
+    var tmpYMax = d3.max(params, function(d) {
+      return d.b;
+    });
+
+    paramFx.domain([tmpXMin, tmpXMax]);
+    paramFy.domain([tmpYMin, tmpYMax]);
+
+    var tmpXAxis = gd_paramSVG.select('g.axis.paramX');
+    var tmpYAxis = gd_paramSVG.select('g.axis.paramY');
+
+    tmpXAxis.transition().duration(1000).ease('sin-in-out').call(paramXAxis);
+    tmpYAxis.transition().duration(1000).ease('sin-in-out').call(paramYAxis);
+
+    var totalLength = 0;
+    var paramPath = 0;
+    var lFunc = d3
+                  .svg
+                  .line()
+                  .x(function(d) { return paramFx(d.m); })
+                  .y(function(d) { return paramFy(d.b); })
+                  .interpolate('cardinal');
+
+    gd_paramSVG.select('.param-path').remove();
+
+    gd_paramSVG
+      .append('path')
+      .attr('class', 'param-path')
+      .attr('d', lFunc(params))
+      .attr('stroke', 'steelblue')
+      .attr('stroke-width', 2)
+      .attr('fill', 'none');
+  }
+
+  function render(gd_data) {
+    gd_svg
+      .selectAll('circle')
+      .remove();
+
+    gd_svg
+      .selectAll('circle')
+      .data(gd_data)
+      .enter()
+      .append('circle')
+      .attr('cx', function(pt) {
+        return gd_fx(pt.x);
+      })
+      .attr('cy', function(pt) {
+        return gd_fy(pt.y);
+      })
+      .attr('r', 3);
+  }
+
+  function updateBestFit(param) {
+    // param --> { m : int, b : int }
+
+    d3.select('.fit-line').remove();
+
+    var y1 = gd_func(param, xMin);
+    var y2 = gd_func(param, xMax);
+
+    gd_svg.append('line').attr('class', 'fit-line').attr('x1', gd_fx(xMin)).attr('y1', gd_fy(y1)).attr('x2', gd_fx(xMax)).attr('y2', gd_fy(y2));
+  }
+
+  function isFinished(prev, current, intervalID) {
+    // prev --> { m : int, b : int } is previous parameter.
+    // current --> { m : int, b : int } is current parameter.
+    if(Math.abs(prev.m - current.m) < 0.1 && Math.abs(prev.b - current.b) < 0.1) {
+      clearInterval(intervalID);
+      return true;
+    }
+    return false;
+  }
+
+  function isConverging(prevVal, param, gd_data) {
+    var newVal = errorFunc(param, gd_data);
+    return prevVal > newVal;
+  }
+
+
+  function errorFunc(param, gd_data) {
+    var sum = 0;
+    for(var i = 0; i < gd_data.length; i++) {
+      sum += Math.pow(gd_data[i].y - (param.m * gd_data[i].x + param.b), 2);
+    }
+    return sum;
+  }
+
+
+
+
+
+
+// utils.js
+function Point(xPt, yPt) {
+  var x, y;
+
+  this.x = xPt;
+  this.y = yPt;
+
+  this.print = function() {
+    console.log('x : ' + this.x + ' y : ' + this.y );
+  };
+}
+
+function randomPoint(range) {
+  var min = range.min;
+  var max = range.max;
+
+  if(max < min) {
+    var tmp = max;
+    max = min;
+    min = max;
+  }
+
+  return Math.floor(Math.random() * (max - min));
+}
+
+function makeNoise(offset) {
+  return Math.floor(Math.random() * offset);
+}
+
+
+/**
+  baseLine    --> A function f(x)
+  offset      --> an integer which will be used as our noise value
+  iteration   --> the size of our gd_data
+  range       --> {min : int, max : int}, the lower and upper bound of out x points
+
+  result      --> [Point]
+*/
+function generateData(baseLine, offset, iteration, range) {
+  var result = [];
+
+  if(!iteration || iteration.length <= 0) {
+    return result;
+  }
+
+  for(var i = 0; i < iteration; i++) {
+    var x = randomPoint(range);
+    var pt = new Point(x, baseLine(x) + makeNoise(offset));
+    result.push(pt);
+  }
+
+  return result;
+}
+
+/**
+  prev    -> { m : int, b : int }
+  gd_data    -> [Point]
+
+  result  -> new { m : int, b : int }
+*/
+function updateGradient(prev, learningRate, gd_data) {
+  var size = gd_data.length;
+  var newm = 0;
+  var newb = 0;
+  var newGM = 0;
+  var newGB = 0;
+
+  for(var i = 0; i < size; i++) {
+    var pt = gd_data[i];
+    var partials = calcGradient(prev, pt);
+    newGM += partials.partialM;
+    newGB += partials.partialB;
+  }
+
+  newm = prev.m - (learningRate * newGM);
+  newb = prev.b - (learningRate * newGB);
+
+  return { m : newm, b : newb };
+}
+
+
+/**
+  prev    -> { m : int, b : int }
+  point   -> Point(x,y)
+*/
+function calcGradient(prev, point) {
+
+  var partialM = (2 * (point.y - ((prev.m * point.x) + prev.b)) * (-1.0 * point.x));
+  var partialB = (2 * (point.y - ((prev.m * point.x) + prev.b)) * (-1.0));
+  // console.log('m : ' + partialM + ' b : ' + partialB);
+  return { partialM : partialM, partialB : partialB };
+}
+
+</script>
+
+
+<h1 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h1><p>Let $f$ be a differentiable function at some point $a \in \text{dom}(f)^D$ and $\theta$ be some small real number. Then, we have sequence of points ${ x_{i} }_{i=0}^{L}$ such that</p>
+<span>$$\begin{align*}
+  x_{i+1} &amp; = x_i - \nabla \cdot f(x_i)
+\end{align*}$$</span><!-- Has MathJax -->
+<p>where $f(x_{j-1}) \geq f(x_j),\ j \in {1, 2, 3, \ldots}$</p>
+<p>Since the gradient $\nabla \cdot f(x_i)$ is a vector with magnitude and direction that the function increases greatest, the negative direction of the gradient will be the magnitude and the direction that the function decreases greatest. The algorithm iteratively finds the point $x \in \text{dom}(f)^D$ where the value of $f(x)$ is minimized. This point $x$ will be a local minimum point unless the function $f$ is convex function which guarantees that the local minimum is the global minimum.</p>
+<h1 id="Finding-the-Learning-Rate"><a href="#Finding-the-Learning-Rate" class="headerlink" title="Finding the Learning Rate"></a>Finding the Learning Rate</h1><p>One of the most important part of the Gradient Descent algorithm is finding the best learning rate. Depends on this value, the algorithm can diverge or converge. If the learning rate is too high, the algorithm can diverge with high probability. So one good way to find this value is start high and decrease whenever it diverges, $f(x_i) &gt; f(x_j)$ for all $i &gt; j$.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="https://en.wikipedia.org/wiki/Gradient_descent" target="_blank" rel="external">Wiki</a></li>
+<li><a href="http://sebastianruder.com/optimizing-gradient-descent/" target="_blank" rel="external">Sebastian Ruder</a></li>
+<li><a href="https://spin.atomicobject.com/2014/06/24/gradient-descent-linear-regression/" target="_blank" rel="external">Atomic Object</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Probability-Theory/" rel="tag"># Probability Theory</a>
+          
+            <a href="/tags/Mathematics/" rel="tag"># Mathematics</a>
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+            <a href="/tags/D3-js/" rel="tag"># D3.js</a>
+          
+            <a href="/tags/Statistics/" rel="tag"># Statistics</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/16/linear-regression/" rel="next" title="Linear Regression">
+                <i class="fa fa-chevron-left"></i> Linear Regression
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/04/mahalanobis-distance/" rel="prev" title="mahalanobis_distance">
+                mahalanobis_distance <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Edward Chung" />
+          <p class="site-author-name" itemprop="name">Edward Chung</p>
+          <p class="site-description motion-element" itemprop="description">Man is what he believes.</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/munjo5746" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/munjo5746" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradient-Descent"><span class="nav-number">1.</span> <span class="nav-text">Gradient Descent</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">
+      Gradient Descent
+    </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Definition"><span class="nav-number">2.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Finding-the-Learning-Rate"><span class="nav-number">3.</span> <span class="nav-text">Finding the Learning Rate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Edward Chung</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

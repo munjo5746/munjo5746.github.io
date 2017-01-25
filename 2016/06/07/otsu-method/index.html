@@ -1,0 +1,811 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Mathematics,Algorithm,Python,Computer Vision," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="img[alt=&quot;otsu_method&quot;] {
+  width : 30em;
+}
+
+
+What is it?
+Otsu’s Method is one of image thresholding algorithm in computer vision. One assumption that the algorithm requires is that the given image ha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Otsu's method">
+<meta property="og:url" content="http://http://munjo5746.github.io/2016/06/07/otsu-method/index.html">
+<meta property="og:site_name" content="eChung's Note">
+<meta property="og:description" content="img[alt=&quot;otsu_method&quot;] {
+  width : 30em;
+}
+
+
+What is it?
+Otsu’s Method is one of image thresholding algorithm in computer vision. One assumption that the algorithm requires is that the given image ha">
+<meta property="og:image" content="http://http://munjo5746.github.io/images/otsu_method/fig1.jpg">
+<meta property="og:updated_time" content="2017-01-25T15:54:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Otsu's method">
+<meta name="twitter:description" content="img[alt=&quot;otsu_method&quot;] {
+  width : 30em;
+}
+
+
+What is it?
+Otsu’s Method is one of image thresholding algorithm in computer vision. One assumption that the algorithm requires is that the given image ha">
+<meta name="twitter:image" content="http://http://munjo5746.github.io/images/otsu_method/fig1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://http://munjo5746.github.io/2016/06/07/otsu-method/"/>
+
+
+
+
+
+  <title> Otsu's method | eChung's Note </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">eChung's Note</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">CS & Math</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://http://munjo5746.github.io/2016/06/07/otsu-method/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Edward Chung">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="eChung's Note">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="eChung's Note" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Otsu's method
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-07T23:49:11-04:00">
+                2016-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Vision/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Vision</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <style>
+img[alt="otsu_method"] {
+  width : 30em;
+}
+</style>
+
+<h1 id="What-is-it"><a href="#What-is-it" class="headerlink" title="What is it?"></a>What is it?</h1><p><img src="/images/otsu_method/fig1.jpg" alt="otsu_method"></p>
+<p><a href="https://en.wikipedia.org/wiki/Otsu%27s_method" target="_blank" rel="external">Otsu’s Method</a> is one of image thresholding algorithm in computer vision. One assumption that the algorithm requires is that the given image has two separated groups of pixel intensities (foreground and background). Given this condition on the input image, the algorithm tries to find the optimal pixel intensity that clearly separates this two groups. The implementation of the algorithm can be found <a href="https://github.com/munjo5746/algorithm/tree/master/OtsuThresholding" target="_blank" rel="external">here</a>.</p>
+<h1 id="Theory-behind-algorithm"><a href="#Theory-behind-algorithm" class="headerlink" title="Theory behind algorithm"></a>Theory behind algorithm</h1><p>Let</p>
+<ul>
+<li>the range of intensity value be $0$ ~ $L$.</li>
+<li>$C_i$ where $i \in \{0, 1\}$ be two classes for collection of pixel intensities divided by $t$ (Bi-modal assumption)</li>
+<li>$\omega_j$ where $j \in \{0, 1\}$ be the probability distribution of the pixel intensity within each class</li>
+<li>the variances of each class be $\sigma^2_i$, where $i \in \{0,1\}$</li>
+<li>$n_i$ the number of pixels that has intensity value $i$ and $N$ be the total number of pixels within image, $N=\sum_{i=0}^{L}n_i$.</li>
+</ul>
+<p>The goal is to find one pixel intensity (threshold) value $t_{opt}$ that clearly separates $C_{i}$ into two classes. In order to achieve this, we need a way to represent how far these two classes are separated. The further the two classes are separated the easier to find the optimal value $t_{opt}$. The Otsu’s paper uses discriminant criterion measures used in the discriminant analysis, and claims that the simplest formulation is :</p>
+<p>$$<br>  \eta = \frac{\sigma_B^2}{\sigma_T^2}<br>$$</p>
+<p>where inter-class variance (how far between each class is) be<br><span>$$\begin{aligned}
+\sigma_B^2 &amp; = \omega_0(\mu_0 - \mu_T)^2 + \omega_1(\mu_1 - \mu_T)^2 \\
+           &amp; = \omega_0\omega_1(\mu_1 - \mu_0)^2
+\end{aligned}$$</span><!-- Has MathJax --></p>
+<p>and the total variance be</p>
+<p>$$<br>  \sigma_T^2 = \sum_{i=0}^{L} (i - \mu_T)^2 \cdot p_i<br>$$</p>
+<p>where $p_i$ be normalized probability of intensity $i$.</p>
+<p>The paper states that $\eta$ is function of intensity $t$ and finding the intensity $t$ will give the optimal threshold value $t_{opt}$.</p>
+<hr>
+<p>Normalized probability distribution of pixel intensity within image would be :<br>$$<br>  p_i = \frac{n_i}{N}<br>$$</p>
+<p>where $p_i \geq 0$ and $\sum_{i=0}^{L} p_i = 1$.</p>
+<p>The class probabilities $\omega_j, j \in \{0, 1\}$ are defined as</p>
+<span>$$\begin{aligned}
+  \omega_0 &amp;= p_{C_0} = \sum_{i=0}^{t - 1} p_i = \omega(t) \\
+  \omega_1 &amp;= p_{C_1} = \sum_{i=t}^{L} p_i = 1 - \omega(t)
+\end{aligned}$$</span><!-- Has MathJax -->
+<p>The above statement is valid because of <strong>Kolmogorov axioms (Third Axiom)</strong> which says $p\left(\bigcup_{e \in E} e\right) = \sum_{e \in E} p(e)$, and we assumed the probability $p_i$ is normalized.</p>
+<p>The mean  $\mu_i$ where $i \in \{0, 1\}$ of each class $C_i$ can be found as follows :</p>
+<span>$$\begin{aligned}
+  \mu_0 &amp; = \sum_{i=0}^{t-1} i \cdot \frac{p_i}{\omega_0} = \frac{\mu(t)}{\omega(t)} \\
+  \mu_1 &amp; = \sum_{i=t}^{L} i\cdot\frac{p_i}{\omega_1} = \frac{\mu_T - \mu(t)}{1 - \omega(t)}
+\end{aligned}$$</span><!-- Has MathJax -->
+<p>where</p>
+<span>$$\begin{aligned}
+  \mu_T &amp;= \sum_{i=0}^{L} i \cdot p(i) \\
+  \mu(t) &amp;= \sum_{i=0}^{t-1} i \cdot p_i \\
+  \omega(t) &amp;= \sum_{i=0}^{t-1} p_i
+\end{aligned}$$</span><!-- Has MathJax -->
+<p>Up to this point, we have normalized <em>class probability</em> and <em>class mean</em>. The last part we are going to define is <em>class variance</em>. The class variances will be defined as follow :</p>
+<span>$$\begin{aligned}
+  \sigma_0^2(t) &amp; = \sum_{i=0}^{t-1} [i - \mu_0]^2 \cdot \frac{p_i}{\omega_0} \\
+  \sigma_1^2(t) &amp; = \sum_{i=t}^{L} [i - \mu_1]^2 \cdot \frac{p_i}{\omega_1}
+\end{aligned}$$</span><!-- Has MathJax -->
+<p>The goal is to find $t_{opt}$ that maximize $\eta$. There are few things that we need to keep in mind.</p>
+<ul>
+<li>The variance $\sigma_B^2$ is function of $t$, so is the function $\eta$.</li>
+<li>The function $\eta$ increases as $\sigma_B^2$ increases.</li>
+</ul>
+<p>Then, we have $\eta(t) = \frac{\sigma_B^2(t)}{\sigma_T^2}$, and $\sigma_B^2(t)$ can be formulated as follow :</p>
+<span>$$\begin{aligned}
+\sigma_B^2(t) &amp;= \omega_0 \omega_1(\mu_1-\mu_0)^2 \\\\
+&amp;= \left[\omega(t) \cdot (1-\omega(t))\right] \cdot \left[\frac{\mu_T \cdot \omega(t)-\mu(t)}{\left[(1-\omega(t)) \cdot \omega(t)\right]}\right]^2 \\
+&amp;=\frac{\left[ \mu_T \cdot \omega(t) - \mu(t) \right]^2}{(1-\omega(t)) \cdot \omega(t)}
+\end{aligned}$$</span><!-- Has MathJax -->
+<p>Since $\eta(t)$ increases as $\sigma_B^2(t)$ increases, we only have to find $t_{opt}$ such that</p>
+<span>$$\begin{aligned}
+t_{opt} = \operatorname{arg\ max}_{0 \leq t \leq L} \sigma_B(t)
+\end{aligned}$$</span><!-- Has MathJax -->
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a href="https://en.wikipedia.org/wiki/Probability_axioms" target="_blank" rel="external">Kolmogorov axioms</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Otsu%27s_method" target="_blank" rel="external">Wikipedia</a></li>
+<li><a href="http://darkpgmr.tistory.com/115" target="_blank" rel="external">다크 프로그래머</a></li>
+<li>Otsu, 1979. A Threshold Selection Method from Gray-Level Histograms</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mathematics/" rel="tag"># Mathematics</a>
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Computer-Vision/" rel="tag"># Computer Vision</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/05/storeband/" rel="next" title="Storeband">
+                <i class="fa fa-chevron-left"></i> Storeband
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/16/perceptron/" rel="prev" title="The Perceptron Learning Algorithm">
+                The Perceptron Learning Algorithm <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Edward Chung" />
+          <p class="site-author-name" itemprop="name">Edward Chung</p>
+          <p class="site-description motion-element" itemprop="description">Man is what he believes.</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/munjo5746" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/munjo5746" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-it"><span class="nav-number">1.</span> <span class="nav-text">What is it?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Theory-behind-algorithm"><span class="nav-number">2.</span> <span class="nav-text">Theory behind algorithm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Edward Chung</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

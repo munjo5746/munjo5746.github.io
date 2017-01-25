@@ -1,0 +1,942 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Probability Theory,Mathematics,Algorithm,D3.js,Statistics,Javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Binomial DistributionThe Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter $n$ (# of indepe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Binomial Distribution">
+<meta property="og:url" content="http://http://munjo5746.github.io/2016/06/30/binomial/index.html">
+<meta property="og:site_name" content="eChung's Note">
+<meta property="og:description" content="Binomial DistributionThe Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter $n$ (# of indepe">
+<meta property="og:updated_time" content="2017-01-25T17:10:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Binomial Distribution">
+<meta name="twitter:description" content="Binomial DistributionThe Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter $n$ (# of indepe">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://http://munjo5746.github.io/2016/06/30/binomial/"/>
+
+
+
+
+
+  <title> Binomial Distribution | eChung's Note </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">eChung's Note</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">CS & Math</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://http://munjo5746.github.io/2016/06/30/binomial/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Edward Chung">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="eChung's Note">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="eChung's Note" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Binomial Distribution
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-30T00:03:15-04:00">
+                2016-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Probability-Theory/" itemprop="url" rel="index">
+                    <span itemprop="name">Probability Theory</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Binomial-Distribution"><a href="#Binomial-Distribution" class="headerlink" title="Binomial Distribution"></a>Binomial Distribution</h1><p>The Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter $n$ (# of independent events) and $p$ (probability of each event). If some random variable $X$ has binomial distribution, we denote it as $X \sim B(n, p)$.</p>
+<h2 id="Probability-Mass-function"><a href="#Probability-Mass-function" class="headerlink" title="Probability Mass function"></a>Probability Mass function</h2><p>Let</p>
+<ul>
+<li>$n$ be the # of independent events</li>
+<li>$k$ be the # of successes in $n$ events</li>
+<li>$p$ be the probability of each event</li>
+</ul>
+<p>then, the probability mass function can be defined as</p>
+<span>$$\begin{align*}
+  p(X = k) = { n \choose k } p^k (1-p)^{(n-k)}
+\end{align*}$$</span><!-- Has MathJax -->
+<p>where ${ n \choose k } = \frac{n!}{k!(n-k)!}$ is the binomial coefficient.</p>
+<h1 id="Binomial-Probability-in-Code"><a href="#Binomial-Probability-in-Code" class="headerlink" title="Binomial Probability in Code"></a>Binomial Probability in Code</h1>
+  <style>
+    .binomial-axis path,
+    .binomial-axis {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    .binomial-container {
+      width: 100%;
+      text-align: center;
+      border: 1px solid lightgray;
+    }
+
+    .binomial-panel-box {
+      width: 100%;
+      height: 2em;
+      display: table;
+    }
+
+    .binomial-middle {
+      vertical-align: middle;
+    }
+
+    .binomial-center {
+      margin: auto;
+    }
+  </style>
+  <div class="binomial-container">
+    <div class="binomial-left binomial-graph">
+
+    </div>
+
+    <div class="binomial-left">
+      <h3>Input</h3>
+      <div class="binomial-panel-box">
+        <label class="binomial-middle" for="n-value">n : <span class="n binomial-label"></span></label>
+        <input class="binomial-middle" name="n-value" type="range" style="margin-left: 1em;" min="1" max="20" value="1">
+      </div>
+
+      <div class="binomial-panel-box">
+        <label class="binomial-middle binomial-center" for="k-value">k : <span class="k binomial-label"></span></label>
+        <input class="binomial-middle binomial-center" name="k-value" style="margin-left: 1em;" type="range" min="1" max="20" value="1">
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    var w = 500;
+    var h = 300;
+    var padding = 50;
+    var svg = d3.select('.binomial-container .binomial-graph').append('svg').attr('width', w).attr('height', h);
+
+    var n = $('input[name="n-value"]');
+    var k = $('input[name="k-value"]');
+    $('.n.binomial-label').text(n.val());
+    $('.k.binomial-label').text(k.val());
+
+    var data = generateData(+n.val(), +k.val(), 0.5);
+    var xScale = d3.scale.linear().domain([0, d3.max(data, function(d) {
+      return d[0];
+    })]).range([padding, w - padding]);
+    var yScale = d3.scale.linear().domain([0, d3.max(data, function(d) {
+      return d[1];
+    })]).range([h - padding, padding]);
+
+    var xAxis = d3.svg.axis().scale(xScale).orient('bottom');
+    var yAxis = d3.svg.axis().scale(yScale).orient('left');
+
+    svg
+      .append('g')
+      .attr('class', 'x binomial-axis')
+      .attr('transform', 'translate(0, ' + (h - padding) + ')')
+      .call(xAxis);
+
+    svg
+      .append('g')
+      .attr('class', 'y binomial-axis')
+      .attr('transform', 'translate(' + padding + ', 0)')
+      .call(yAxis);
+
+    update(svg, data, xScale, yScale, xAxis, yAxis);
+
+    var nVal = d3.select('input[name="n-value"]').on('input', function() {
+      var n = $('input[name="n-value"]');
+      var k = $('input[name="k-value"]');
+      var nLabel = $('.n.binomial-label').text(this.value);
+      var kLabel = $('.k.binomial-label').text(k.val());
+      n.val(this.value);
+      //d3.select('input[name="n-value"]').property('value', +this.value);
+      data = generateData(n.val(), k.val(), 0.5);
+      update(svg, data, xScale, yScale, xAxis, yAxis);
+
+    });
+
+    var kVal = d3.select('input[name="k-value"]').on('input', function() {
+      var n = $('input[name="n-value"]');
+      var k = $('input[name="k-value"]');
+      var kLabel = $('.k.binomial-label').text(this.value);
+      var nLabel = $('.n.binomial-label').text(n.val());
+      if(+n.val() >= +k.val()) {
+        // d3.select('input[name="k-value"]').property('value', +this.value);
+        k.val(this.value);
+        data = generateData(n.val(), k.val(), 0.5);
+
+        update(svg, data, xScale, yScale, xAxis, yAxis);
+      }
+
+
+    });
+
+
+  function update(svg, data, xScale, yScale, xAxis, yAxis) {
+    xScale.domain([0, d3.max(data, function(d) {
+      return d[0];
+    })]);
+    yScale.domain([0, d3.max(data, function(d) {
+      return d[1];
+    })]);
+
+    var xAxisTAG = svg.select('.x.binomial-axis');
+    var yAxisTAG = svg.select('.y.binomial-axis');
+
+    xAxisTAG.transition().duration(1000).call(xAxis);
+    yAxisTAG.transition().duration(1000).call(yAxis);
+
+    svg.selectAll('circle').remove();
+
+    var circles = svg
+                  .selectAll('circle')
+                  .data(data);
+
+    circles
+      .enter()
+      .append('circle')
+      .attr('cx', function(d) { return xScale(d[0]); })
+      .attr('cy', function(d) { return h - padding; })
+      .attr('r', 5)
+      .transition()
+        .attr('cx', function(d) {
+          return xScale(d[0]);
+        })
+        .attr('cy', function(d) {
+          return yScale(d[1]);
+        })
+        .attr('r', 5)
+        .duration(1000);
+
+  }
+
+  function generateData(n, k, p, prev) {
+    var prevData = [];
+    var data = [];
+    for(var i=0; i < k; i++) {
+      data.push([i, binomialProb(n, i, p)]);
+    }
+    return data;
+  }
+
+
+  function factorial(n) {
+    if(n === 0) return 1;
+    var result = 1;
+
+    for(var i = n; i >= 0; i--) {
+      if(i > 0) {
+        result *= i;
+      } else {
+        result *= 1;
+      }
+    }
+    return result;
+  }
+
+  function binomialCoefficient(n, k) {
+    var nFact = factorial(n);
+    var kFact = factorial(k);
+    var n_kFact = factorial(n - k);
+    return (nFact/(kFact * n_kFact));
+  }
+
+  function binomialProb(n, k, p) {
+    return binomialCoefficient(n, k) * Math.pow(p, k) * Math.pow(1 - p, n - k);
+  }
+  </script>
+
+<p>The following graph is implemented in D3.js and plots the probability of $k$ number of successes in $n$ independent trials. The condition of variables $n$ and $k$ is that $n &gt;= k$ since there cannot be more successes than the total number of trials. Besides the actual code that draws the plots on the screen, there are parts required to calculate the probability.</p>
+<p>In order to find the Binomial probability, it is required to find the Binomial Coefficient which is defined as ${ n \choose k } = \frac{n!}{k!(n-k)!}$ is the binomial coefficient. This involves finding <em>factorial</em>.</p>
+<h2 id="Factorial"><a href="#Factorial" class="headerlink" title="Factorial"></a>Factorial</h2><p>The factorial is which is defined as<br><span>$$\begin{align*}
+  n! &amp;= \prod_{i=1}^{n} i
+\end{align*}$$</span><!-- Has MathJax --></p>
+<p>and $0! = 1$. In code this can be calculated as below.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(n === <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  <span class="keyword">var</span> result = <span class="number">1</span>;</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = n; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">    result *= i;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Binomial-Coefficient"><a href="#Binomial-Coefficient" class="headerlink" title="Binomial Coefficient"></a>Binomial Coefficient</h2><p>As stated above, the Binomial Coefficient is defined as follow.</p>
+<span>$$\begin{align*}
+{ n \choose k } &amp;= \frac{n!}{k!(n-k)!}
+\end{align*}$$</span><!-- Has MathJax -->
+<p>Since we already have factorial in hands, this can be calculated easily.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">binomialCoefficient</span>(<span class="params">n, k</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> nFact = factorial(n);</div><div class="line">  <span class="keyword">var</span> kFact = factorial(k);</div><div class="line">  <span class="keyword">var</span> n_kFact = factorial(n - k);</div><div class="line">  <span class="keyword">return</span> (nFact/(kFact * n_kFact));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Binomial-Probability"><a href="#Binomial-Probability" class="headerlink" title="Binomial Probability"></a>Binomial Probability</h2><p>Once we have Factorial and Binomial Coefficient in hands, finding the Binomial Probability with parameters $n$ and $k$ is easy. Since the Binomial Probability is defined as follow :</p>
+<span>$$\begin{align*}
+  p(X = k) = { n \choose k } p^k (1-p)^{(n-k)}
+\end{align*}$$</span><!-- Has MathJax -->
+<p>we can just substitute the equations with code as follow :</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">binomialProb</span>(<span class="params">n, k, p</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> binomialCoefficient(n, k) * <span class="built_in">Math</span>.pow(p, k) * <span class="built_in">Math</span>.pow(<span class="number">1</span> - p, n - k);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Probability-Theory/" rel="tag"># Probability Theory</a>
+          
+            <a href="/tags/Mathematics/" rel="tag"># Mathematics</a>
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+            <a href="/tags/D3-js/" rel="tag"># D3.js</a>
+          
+            <a href="/tags/Statistics/" rel="tag"># Statistics</a>
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/16/perceptron/" rel="next" title="The Perceptron Learning Algorithm">
+                <i class="fa fa-chevron-left"></i> The Perceptron Learning Algorithm
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/16/linear-regression/" rel="prev" title="Linear Regression">
+                Linear Regression <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Edward Chung" />
+          <p class="site-author-name" itemprop="name">Edward Chung</p>
+          <p class="site-description motion-element" itemprop="description">Man is what he believes.</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/munjo5746" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/munjo5746" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Binomial-Distribution"><span class="nav-number">1.</span> <span class="nav-text">Binomial Distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Probability-Mass-function"><span class="nav-number">1.1.</span> <span class="nav-text">Probability Mass function</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Binomial-Probability-in-Code"><span class="nav-number">2.</span> <span class="nav-text">Binomial Probability in Code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.0.1.</span> <span class="nav-text">Input</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Factorial"><span class="nav-number">2.1.</span> <span class="nav-text">Factorial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binomial-Coefficient"><span class="nav-number">2.2.</span> <span class="nav-text">Binomial Coefficient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binomial-Probability"><span class="nav-number">2.3.</span> <span class="nav-text">Binomial Probability</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Edward Chung</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

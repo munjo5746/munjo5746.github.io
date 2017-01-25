@@ -1,0 +1,25 @@
+
+/**
+  Style Guide
+    - class structure : <project name="">-<style name="">
+*/
+.binomial-axis path,
+.binomial-axis {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.binomial-left {
+  float: left;
+}
+
+.binomial-panel-box {
+  height: 2em;
+  display: table;
+}
+
+.binomial-middle {
+  vertical-align: middle;
+}
+</style></project>
