@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="Gradient Descent
-Let’s assume that we have a function \(f\) that the value of \(f(x), x \in \text{dom}(f)\) needs to be minimized at some parameter \(x\) in its domain. The Gradient Descent algorithm">
+<meta name="description" content="Gradient DescentLet’s assume that we have a function $f$ that the value of $f(x), x \in \text{dom}(f)$ needs to be minimized at some parameter $x$ in its domain. The Gradient Descent algorithm is an o">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gradient Descent">
 <meta property="og:url" content="http://http://munjo5746.github.io/2016/07/22/gradient-descent/index.html">
 <meta property="og:site_name" content="eChung's Note">
-<meta property="og:description" content="Gradient Descent
-Let’s assume that we have a function \(f\) that the value of \(f(x), x \in \text{dom}(f)\) needs to be minimized at some parameter \(x\) in its domain. The Gradient Descent algorithm">
+<meta property="og:description" content="Gradient DescentLet’s assume that we have a function $f$ that the value of $f(x), x \in \text{dom}(f)$ needs to be minimized at some parameter $x$ in its domain. The Gradient Descent algorithm is an o">
 <meta property="og:updated_time" content="2017-01-25T17:11:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gradient Descent">
-<meta name="twitter:description" content="Gradient Descent
-Let’s assume that we have a function \(f\) that the value of \(f(x), x \in \text{dom}(f)\) needs to be minimized at some parameter \(x\) in its domain. The Gradient Descent algorithm">
+<meta name="twitter:description" content="Gradient DescentLet’s assume that we have a function $f$ that the value of $f(x), x \in \text{dom}(f)$ needs to be minimized at some parameter $x$ in its domain. The Gradient Descent algorithm is an o">
 
 
 
@@ -197,6 +194,26 @@ Let’s assume that we have a function \(f\) that the value of \(f(x), x \in \te
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -346,8 +363,7 @@ Let’s assume that we have a function \(f\) that the value of \(f(x), x \in \te
       
 
       
-        <h1 id="gradient-descent">Gradient Descent</h1>
-<p>Let’s assume that we have a function <span class="math inline">\(f\)</span> that the value of <span class="math inline">\(f(x), x \in \text{dom}(f)\)</span> needs to be minimized at some parameter <span class="math inline">\(x\)</span> in its domain. The Gradient Descent algorithm is an optimization algorithm that finds this parameter <span class="math inline">\(x\)</span>.</p>
+        <h1 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h1><p>Let’s assume that we have a function $f$ that the value of $f(x), x \in \text{dom}(f)$ needs to be minimized at some parameter $x$ in its domain. The Gradient Descent algorithm is an optimization algorithm that finds this parameter $x$.</p>
 
 <style>
 .gd-container {
@@ -759,17 +775,14 @@ function calcGradient(prev, point) {
 </script>
 
 
-<h1 id="definition">Definition</h1>
-<p>Let <span class="math inline">\(f\)</span> be a differentiable function at some point <span class="math inline">\(a \in \text{dom}(f)^D\)</span> and <span class="math inline">\(\theta\)</span> be some small real number. Then, we have sequence of points <span class="math inline">\(\{ x\_{i} \}_{i=0}^{L}\)</span> such that</p>
+<h1 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h1><p>Let $f$ be a differentiable function at some point $a \in \text{dom}(f)^D$ and $\theta$ be some small real number. Then, we have sequence of points ${ x_{i} }_{i=0}^{L}$ such that</p>
 <span>$$\begin{align*}
   x_{i+1} &amp; = x_i - \nabla \cdot f(x_i)
 \end{align*}$$</span><!-- Has MathJax -->
-<p>where <span class="math inline">\(f(x_{j-1}) \geq f(x\_j),\ j \in \{1, 2, 3, \ldots\}\)</span></p>
-<p>Since the gradient <span class="math inline">\(\nabla \cdot f(x\_i)\)</span> is a vector with magnitude and direction that the function increases greatest, the negative direction of the gradient will be the magnitude and the direction that the function decreases greatest. The algorithm iteratively finds the point <span class="math inline">\(x \in \text{dom}(f)^D\)</span> where the value of <span class="math inline">\(f(x)\)</span> is minimized. This point <span class="math inline">\(x\)</span> will be a local minimum point unless the function <span class="math inline">\(f\)</span> is convex function which guarantees that the local minimum is the global minimum.</p>
-<h1 id="finding-the-learning-rate">Finding the Learning Rate</h1>
-<p>One of the most important part of the Gradient Descent algorithm is finding the best learning rate. Depends on this value, the algorithm can diverge or converge. If the learning rate is too high, the algorithm can diverge with high probability. So one good way to find this value is start high and decrease whenever it diverges, <span class="math inline">\(f(x\_i) &gt; f(x_j)\)</span> for all <span class="math inline">\(i &gt; j\)</span>.</p>
-<h1 id="references">References</h1>
-<ul>
+<p>where $f(x_{j-1}) \geq f(x_j),\ j \in {1, 2, 3, \ldots}$</p>
+<p>Since the gradient $\nabla \cdot f(x_i)$ is a vector with magnitude and direction that the function increases greatest, the negative direction of the gradient will be the magnitude and the direction that the function decreases greatest. The algorithm iteratively finds the point $x \in \text{dom}(f)^D$ where the value of $f(x)$ is minimized. This point $x$ will be a local minimum point unless the function $f$ is convex function which guarantees that the local minimum is the global minimum.</p>
+<h1 id="Finding-the-Learning-Rate"><a href="#Finding-the-Learning-Rate" class="headerlink" title="Finding the Learning Rate"></a>Finding the Learning Rate</h1><p>One of the most important part of the Gradient Descent algorithm is finding the best learning rate. Depends on this value, the algorithm can diverge or converge. If the learning rate is too high, the algorithm can diverge with high probability. So one good way to find this value is start high and decrease whenever it diverges, $f(x_i) &gt; f(x_j)$ for all $i &gt; j$.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
 <li><a href="https://en.wikipedia.org/wiki/Gradient_descent" target="_blank" rel="external">Wiki</a></li>
 <li><a href="http://sebastianruder.com/optimizing-gradient-descent/" target="_blank" rel="external">Sebastian Ruder</a></li>
 <li><a href="https://spin.atomicobject.com/2014/06/24/gradient-descent-linear-regression/" target="_blank" rel="external">Atomic Object</a></li>
@@ -904,10 +917,10 @@ function calcGradient(prev, point) {
 
           
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories">
                 <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">categories</span>
-              
+              </a>
             </div>
           
 
@@ -969,9 +982,9 @@ function calcGradient(prev, point) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#gradient-descent"><span class="nav-number">1.</span> <span class="nav-text">Gradient Descent</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradient-Descent"><span class="nav-number">1.</span> <span class="nav-text">Gradient Descent</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">
       Gradient Descent
-    </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#definition"><span class="nav-number">2.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#finding-the-learning-rate"><span class="nav-number">3.</span> <span class="nav-text">Finding the Learning Rate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+    </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Definition"><span class="nav-number">2.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Finding-the-Learning-Rate"><span class="nav-number">3.</span> <span class="nav-text">Finding the Learning Rate</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>

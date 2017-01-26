@@ -199,6 +199,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -349,22 +369,15 @@
       
         
           
-            <h1 id="what-is-it">What is it?</h1>
-<div class="figure">
-<img src="/images/TRUePic/truepic.gif" alt="TRUePic">
-<p class="caption">TRUePic</p>
-</div>
+            <h1 id="What-is-it"><a href="#What-is-it" class="headerlink" title="What is it?"></a>What is it?</h1><p><img src="/images/TRUePic/truepic.gif" alt="TRUePic"></p>
 <p>The app <strong>CAS TRUePic Upload</strong> is an iOS application that let truckers upload their information (Driver’s License, Trucking company..) in order to pick up sensitive shipments handled by a cargo company called CAS (Consolidated Aviation Services). This application started with an idea to simplify and speed up the processes of picking sensitive shipments. This application has been published on the App Store.</p>
-<h1 id="what-was-required">What was required?</h1>
-<p>The project was required to implement the backend using <strong>ASP.NET MVC</strong> and the iOS application using Objective-C. All the communications between the server and the application used JSON, and the application has features such as upload documents, view shipment information that is visible to public…</p>
-<h2 id="backend-asp.net-mvc">Backend (ASP.NET MVC)</h2>
-<ul>
+<h1 id="What-was-required"><a href="#What-was-required" class="headerlink" title="What was required?"></a>What was required?</h1><p>The project was required to implement the backend using <strong>ASP.NET MVC</strong> and the iOS application using Objective-C. All the communications between the server and the application used JSON, and the application has features such as upload documents, view shipment information that is visible to public…</p>
+<h2 id="Backend-ASP-NET-MVC"><a href="#Backend-ASP-NET-MVC" class="headerlink" title="Backend (ASP.NET MVC)"></a>Backend (ASP.NET MVC)</h2><ul>
 <li>The server side code was implemented using <strong>ASP.NET MVC (C#)</strong> and published internal company server.</li>
 <li>The server code used Restful API using JSON.</li>
 <li>The codes are implemented as clean and testable as possible.</li>
 </ul>
-<h2 id="mobile-ios">Mobile (iOS)</h2>
-<ul>
+<h2 id="Mobile-iOS"><a href="#Mobile-iOS" class="headerlink" title="Mobile (iOS)"></a>Mobile (iOS)</h2><ul>
 <li>The iOS mobile application was implemented using Objective-C.</li>
 <li>It has features such as upload documents, view shipment information.</li>
 </ul>
@@ -487,7 +500,6 @@
         
           
             
-
           
         
       
@@ -627,8 +639,7 @@
       
         
           
-            <h1 id="gradient-descent">Gradient Descent</h1>
-<p>Let’s assume that we have a function <span class="math inline">\(f\)</span> that the value of <span class="math inline">\(f(x), x \in \text{dom}(f)\)</span> needs to be minimized at some parameter <span class="math inline">\(x\)</span> in its domain. The Gradient Descent algorithm is an optimization algorithm that finds this parameter <span class="math inline">\(x\)</span>.</p>
+            <h1 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h1><p>Let’s assume that we have a function $f$ that the value of $f(x), x \in \text{dom}(f)$ needs to be minimized at some parameter $x$ in its domain. The Gradient Descent algorithm is an optimization algorithm that finds this parameter $x$.</p>
 
 <style>
 .gd-container {
@@ -1040,17 +1051,14 @@ function calcGradient(prev, point) {
 </script>
 
 
-<h1 id="definition">Definition</h1>
-<p>Let <span class="math inline">\(f\)</span> be a differentiable function at some point <span class="math inline">\(a \in \text{dom}(f)^D\)</span> and <span class="math inline">\(\theta\)</span> be some small real number. Then, we have sequence of points <span class="math inline">\(\{ x\_{i} \}_{i=0}^{L}\)</span> such that</p>
+<h1 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h1><p>Let $f$ be a differentiable function at some point $a \in \text{dom}(f)^D$ and $\theta$ be some small real number. Then, we have sequence of points ${ x_{i} }_{i=0}^{L}$ such that</p>
 <span>$$\begin{align*}
   x_{i+1} &amp; = x_i - \nabla \cdot f(x_i)
 \end{align*}$$</span><!-- Has MathJax -->
-<p>where <span class="math inline">\(f(x_{j-1}) \geq f(x\_j),\ j \in \{1, 2, 3, \ldots\}\)</span></p>
-<p>Since the gradient <span class="math inline">\(\nabla \cdot f(x\_i)\)</span> is a vector with magnitude and direction that the function increases greatest, the negative direction of the gradient will be the magnitude and the direction that the function decreases greatest. The algorithm iteratively finds the point <span class="math inline">\(x \in \text{dom}(f)^D\)</span> where the value of <span class="math inline">\(f(x)\)</span> is minimized. This point <span class="math inline">\(x\)</span> will be a local minimum point unless the function <span class="math inline">\(f\)</span> is convex function which guarantees that the local minimum is the global minimum.</p>
-<h1 id="finding-the-learning-rate">Finding the Learning Rate</h1>
-<p>One of the most important part of the Gradient Descent algorithm is finding the best learning rate. Depends on this value, the algorithm can diverge or converge. If the learning rate is too high, the algorithm can diverge with high probability. So one good way to find this value is start high and decrease whenever it diverges, <span class="math inline">\(f(x\_i) &gt; f(x_j)\)</span> for all <span class="math inline">\(i &gt; j\)</span>.</p>
-<h1 id="references">References</h1>
-<ul>
+<p>where $f(x_{j-1}) \geq f(x_j),\ j \in {1, 2, 3, \ldots}$</p>
+<p>Since the gradient $\nabla \cdot f(x_i)$ is a vector with magnitude and direction that the function increases greatest, the negative direction of the gradient will be the magnitude and the direction that the function decreases greatest. The algorithm iteratively finds the point $x \in \text{dom}(f)^D$ where the value of $f(x)$ is minimized. This point $x$ will be a local minimum point unless the function $f$ is convex function which guarantees that the local minimum is the global minimum.</p>
+<h1 id="Finding-the-Learning-Rate"><a href="#Finding-the-Learning-Rate" class="headerlink" title="Finding the Learning Rate"></a>Finding the Learning Rate</h1><p>One of the most important part of the Gradient Descent algorithm is finding the best learning rate. Depends on this value, the algorithm can diverge or converge. If the learning rate is too high, the algorithm can diverge with high probability. So one good way to find this value is start high and decrease whenever it diverges, $f(x_i) &gt; f(x_j)$ for all $i &gt; j$.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
 <li><a href="https://en.wikipedia.org/wiki/Gradient_descent" target="_blank" rel="external">Wiki</a></li>
 <li><a href="http://sebastianruder.com/optimizing-gradient-descent/" target="_blank" rel="external">Sebastian Ruder</a></li>
 <li><a href="https://spin.atomicobject.com/2014/06/24/gradient-descent-linear-regression/" target="_blank" rel="external">Atomic Object</a></li>
@@ -1195,8 +1203,7 @@ function calcGradient(prev, point) {
       
         
           
-            <h1 id="linear-regression">Linear Regression</h1>
-<p>The Linear Regression is a statistical approach to find the relationship within the data where the data consist of dependent variables <span class="math inline">\(y\_i\)</span> and independent variables <span class="math inline">\(\\{ x\_{i,k} \\}\_{k=1}^{L}\)</span> with the dimension <span class="math inline">\(L\)</span>. The most famous approach to fit the data set is called <strong>Least Square Method</strong> which finds the best fitted line to the data set.</p>
+            <h1 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h1><p>The Linear Regression is a statistical approach to find the relationship within the data where the data consist of dependent variables $y_i$ and independent variables $\{ x_{i,k} \}_{k=1}^{L}$ with the dimension $L$. The most famous approach to fit the data set is called <strong>Least Square Method</strong> which finds the best fitted line to the data set.</p>
 
 <div id="regression-container"></div>
 
@@ -1516,13 +1523,12 @@ function calcGradient(prev, point) {
 
 </script>
 
-<h2 id="least-square-method">Least Square Method</h2>
-<p>The Least Square method is a way of finding the line that best fits the given data set. By saying best fitted line, we mean that the line that minimizes the distance(Error) between the line and each data point.</p>
-<p>Let the dimension be <span class="math inline">\(L=1\)</span>, and assume that we have a data set <span class="math inline">\(\{ y\_i, x_i\}\)</span> for <span class="math inline">\(i \in \\{1, 2, \ldots , D\\}\)</span>. With the equation of a line <span class="math inline">\(y = mx + b\)</span> on hands, we may define the error function as follows:</p>
+<h2 id="Least-Square-Method"><a href="#Least-Square-Method" class="headerlink" title="Least Square Method"></a>Least Square Method</h2><p>The Least Square method is a way of finding the line that best fits the given data set. By saying best fitted line, we mean that the line that minimizes the distance(Error) between the line and each data point.</p>
+<p>Let the dimension be $L=1$, and assume that we have a data set ${ y_i, x_i}$ for $i \in \{1, 2, \ldots , D\}$. With the equation of a line $y = mx + b$ on hands, we may define the error function as follows:</p>
 <span>$$\begin{equation*}
 E(m, b) = \sum_{i = 1}^{D} \left[ y_i - (mx_i + b) \right]^2
 \end{equation*}$$</span><!-- Has MathJax -->
-<p>In order to find the best fitted line with this error function, the focus comes down to find the parameters, the slope <span class="math inline">\(m\)</span> and the y-intercept <span class="math inline">\(b\)</span>. In calculus, finding the critical points of a function can give us the points that minimizes the function. So setting the partial derivatives of the error functions equal to 0, we have: <span>$$\begin{align*}
+<p>In order to find the best fitted line with this error function, the focus comes down to find the parameters, the slope $m$ and the y-intercept $b$. In calculus, finding the critical points of a function can give us the points that minimizes the function. So setting the partial derivatives of the error functions equal to 0, we have:<br><span>$$\begin{align*}
 \frac{\partial E(m,b)}{\partial m} &amp;= 2 \cdot \sum_{i=1}^{D} \left[ y_i - (mx_i + b) \right] \cdot (-x_i) \\
 &amp;= 0 \\
 \frac{\partial E(m,b)}{\partial b} &amp;= 2 \cdot \sum_{i=1}^{D} \left[ y_i - (mx_i + b) \right] \cdot (1) \\
@@ -1533,11 +1539,11 @@ E(m, b) = \sum_{i = 1}^{D} \left[ y_i - (mx_i + b) \right]^2
 &amp; 2 \cdot \sum_{i=1}^{D} \left[ y_i x_i - m x_i^2 - b x_i \right] = 0 \\
 \implies &amp; \sum_{i=1}^{D} m x_i^2 + \sum_{i=1}^{D} b x_i  = \sum_{i=1}^{D} y_i x_i \\
 \end{align*}$$</span><!-- Has MathJax -->
-<p>and <span>$$\begin{align*}
+<p>and<br><span>$$\begin{align*}
 &amp; 2 \cdot \sum_{i = 1}^{D} \left[ y_i - m x_i - b \right] = 0 \\
 \implies &amp; \sum_{i=1}^{D} m x_i + \sum_{i=1}^{D} b = \sum_{i=1}^{D} y_i
 \end{align*}$$</span><!-- Has MathJax --></p>
-<p>In matrix form, this can be re-rewritten as <span>$$\begin{bmatrix}
+<p>In matrix form, this can be re-rewritten as<br><span>$$\begin{bmatrix}
 \sum_{i=1}^{D} x_i^2 &amp; \sum_{i=1}^{D} x_i \\
 \sum_{i=1}^{D} x_i &amp; \sum_{i=1}^{D} 1
 \end{bmatrix}
@@ -1554,7 +1560,7 @@ b
  \sum_{i=1}^{D} y_i x_i \\
  \sum_{i=1}^{D} y_i
  \end{bmatrix}$$</span><!-- Has MathJax --></p>
-<p>Since the goal is to find the parameters <span class="math inline">\(m\)</span> and <span class="math inline">\(b\)</span>, the above matrix equation can be solved by finding the inverse matrix as follow : <span>$$\begin{bmatrix}
+<p>Since the goal is to find the parameters $m$ and $b$, the above matrix equation can be solved by finding the inverse matrix as follow :<br><span>$$\begin{bmatrix}
 m \\
 b
 \end{bmatrix}
@@ -1570,8 +1576,7 @@ b
 \sum_{i=1}^{D} y_i x_i \\
 \sum_{i=1}^{D} y_i
 \end{bmatrix}$$</span><!-- Has MathJax --></p>
-<h1 id="references">References</h1>
-<ul>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
 <li><a href="https://en.wikipedia.org/wiki/Least_squares" target="_blank" rel="external">Least Square - Wikipedia</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Linear_regression" target="_blank" rel="external">Linear Regression</a></li>
 <li><a href="https://web.williams.edu/Mathematics/sjmiller/public_html/BrownClasses/54/handouts/MethodLeastSquares.pdf" target="_blank" rel="external">Steven J. Miller</a></li>
@@ -1716,17 +1721,19 @@ b
       
         
           
-            <h1 id="binomial-distribution">Binomial Distribution</h1>
-<p>The Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter <span class="math inline">\(n\)</span> (# of independent events) and <span class="math inline">\(p\)</span> (probability of each event). If some random variable <span class="math inline">\(X\)</span> has binomial distribution, we denote it as <span class="math inline">\(X \sim B(n, p)\)</span>.</p>
-<h2 id="probability-mass-function">Probability Mass function</h2>
-<p>Let - <span class="math inline">\(n\)</span> be the # of independent events - <span class="math inline">\(k\)</span> be the # of successes in <span class="math inline">\(n\)</span> events - <span class="math inline">\(p\)</span> be the probability of each event</p>
+            <h1 id="Binomial-Distribution"><a href="#Binomial-Distribution" class="headerlink" title="Binomial Distribution"></a>Binomial Distribution</h1><p>The Binomial Distribution is a discrete probability distribution which tells us that the number of successes in some sequence of independent events with parameter $n$ (# of independent events) and $p$ (probability of each event). If some random variable $X$ has binomial distribution, we denote it as $X \sim B(n, p)$.</p>
+<h2 id="Probability-Mass-function"><a href="#Probability-Mass-function" class="headerlink" title="Probability Mass function"></a>Probability Mass function</h2><p>Let</p>
+<ul>
+<li>$n$ be the # of independent events</li>
+<li>$k$ be the # of successes in $n$ events</li>
+<li>$p$ be the probability of each event</li>
+</ul>
 <p>then, the probability mass function can be defined as</p>
 <span>$$\begin{align*}
   p(X = k) = { n \choose k } p^k (1-p)^{(n-k)}
 \end{align*}$$</span><!-- Has MathJax -->
-<p>where <span class="math inline">\({ n \choose k } = \frac{n!}{k!(n-k)!}\)</span> is the binomial coefficient.</p>
-<h1 id="binomial-probability-in-code">Binomial Probability in Code</h1>
-
+<p>where ${ n \choose k } = \frac{n!}{k!(n-k)!}$ is the binomial coefficient.</p>
+<h1 id="Binomial-Probability-in-Code"><a href="#Binomial-Probability-in-Code" class="headerlink" title="Binomial Probability in Code"></a>Binomial Probability in Code</h1>
   <style>
     .binomial-axis path,
     .binomial-axis {
@@ -1914,23 +1921,20 @@ b
   }
   </script>
 
-<p>The following graph is implemented in D3.js and plots the probability of <span class="math inline">\(k\)</span> number of successes in <span class="math inline">\(n\)</span> independent trials. The condition of variables <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span> is that <span class="math inline">\(n &gt;= k\)</span> since there cannot be more successes than the total number of trials. Besides the actual code that draws the plots on the screen, there are parts required to calculate the probability.</p>
-<p>In order to find the Binomial probability, it is required to find the Binomial Coefficient which is defined as <span class="math inline">\({ n \choose k } = \frac{n!}{k!(n-k)!}\)</span> is the binomial coefficient. This involves finding <em>factorial</em>.</p>
-<h2 id="factorial">Factorial</h2>
-<p>The factorial is which is defined as <span>$$\begin{align*}
+<p>The following graph is implemented in D3.js and plots the probability of $k$ number of successes in $n$ independent trials. The condition of variables $n$ and $k$ is that $n &gt;= k$ since there cannot be more successes than the total number of trials. Besides the actual code that draws the plots on the screen, there are parts required to calculate the probability.</p>
+<p>In order to find the Binomial probability, it is required to find the Binomial Coefficient which is defined as ${ n \choose k } = \frac{n!}{k!(n-k)!}$ is the binomial coefficient. This involves finding <em>factorial</em>.</p>
+<h2 id="Factorial"><a href="#Factorial" class="headerlink" title="Factorial"></a>Factorial</h2><p>The factorial is which is defined as<br><span>$$\begin{align*}
   n! &amp;= \prod_{i=1}^{n} i
 \end{align*}$$</span><!-- Has MathJax --></p>
-<p>and <span class="math inline">\(0! = 1\)</span>. In code this can be calculated as below.</p>
+<p>and $0! = 1$. In code this can be calculated as below.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(n === <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  <span class="keyword">var</span> result = <span class="number">1</span>;</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = n; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">    result *= i;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="binomial-coefficient">Binomial Coefficient</h2>
-<p>As stated above, the Binomial Coefficient is defined as follow.</p>
+<h2 id="Binomial-Coefficient"><a href="#Binomial-Coefficient" class="headerlink" title="Binomial Coefficient"></a>Binomial Coefficient</h2><p>As stated above, the Binomial Coefficient is defined as follow.</p>
 <span>$$\begin{align*}
 { n \choose k } &amp;= \frac{n!}{k!(n-k)!}
 \end{align*}$$</span><!-- Has MathJax -->
 <p>Since we already have factorial in hands, this can be calculated easily.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">binomialCoefficient</span>(<span class="params">n, k</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> nFact = factorial(n);</div><div class="line">  <span class="keyword">var</span> kFact = factorial(k);</div><div class="line">  <span class="keyword">var</span> n_kFact = factorial(n - k);</div><div class="line">  <span class="keyword">return</span> (nFact/(kFact * n_kFact));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="binomial-probability">Binomial Probability</h2>
-<p>Once we have Factorial and Binomial Coefficient in hands, finding the Binomial Probability with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span> is easy. Since the Binomial Probability is defined as follow :</p>
+<h2 id="Binomial-Probability"><a href="#Binomial-Probability" class="headerlink" title="Binomial Probability"></a>Binomial Probability</h2><p>Once we have Factorial and Binomial Coefficient in hands, finding the Binomial Probability with parameters $n$ and $k$ is easy. Since the Binomial Probability is defined as follow :</p>
 <span>$$\begin{align*}
   p(X = k) = { n \choose k } p^k (1-p)^{(n-k)}
 \end{align*}$$</span><!-- Has MathJax -->
@@ -2076,19 +2080,17 @@ b
       
         
           
-            <h1 id="perceptron-learning-algorithmpla">Perceptron Learning Algorithm(PLA)</h1>
-<p>The <a href="https://en.wikipedia.org/wiki/Perceptron" target="_blank" rel="external">Perceptron</a> algorithm is a supervised learning algorithm that find a binary classifiers(Yes/No, True/False). Let <span class="math inline">\(x \in \mathbb{R}^d\)</span> and <span class="math inline">\(y \in \mathbb{R}\)</span>. Then, a function that maps <span class="math inline">\(d\)</span> dimensional vector to a single signed value can be defined as follow : <span>$$\begin{aligned}
+            <h1 id="Perceptron-Learning-Algorithm-PLA"><a href="#Perceptron-Learning-Algorithm-PLA" class="headerlink" title="Perceptron Learning Algorithm(PLA)"></a>Perceptron Learning Algorithm(PLA)</h1><p>The <a href="https://en.wikipedia.org/wiki/Perceptron" target="_blank" rel="external">Perceptron</a> algorithm is a supervised learning algorithm that find a binary classifiers(Yes/No, True/False). Let $x \in \mathbb{R}^d$ and $y \in \mathbb{R}$. Then, a function that maps $d$ dimensional vector to a single signed value can be defined as follow :<br><span>$$\begin{aligned}
 f(x) &amp; = \sum_{i=1}^{d}w_i x_i + b \\
      &amp; = w^T \cdot x + b
 \end{aligned}$$</span><!-- Has MathJax --></p>
-<p>where <span class="math inline">\(w \in \mathbb{R}^d\)</span> be the weight vector(classifier), <span class="math inline">\(b\)</span> be the bias, and <span class="math inline">\(\cdot\)</span> denotes the dot product. If input data is <a href="https://en.wikipedia.org/wiki/Linear_separability" target="_blank" rel="external">linearly separable</a>, then there exists a line <span class="math inline">\(x \cdot w + b = 0\)</span> that clearly separates the data into two groups.</p>
-<p>To make the formula even simpler, we can merge the bias term <span class="math inline">\(b\)</span> into the vector <span class="math inline">\(w = [w\_0, w\_1, \ldots , w\_d]\)</span> where <span class="math inline">\(w\_0 = b\)</span> and <span class="math inline">\(x = [x\_0, x\_1, \ldots , x\_d]\)</span> where <span class="math inline">\(x\_0 = 1\)</span>. Then, the function <span class="math inline">\(f(x)\)</span> becomes</p>
-<p><span class="math display">\[f(x) = w^T \cdot x\]</span></p>
-<p>The Perceptron Learning Algorithm(PLA) finds the weight vector <span class="math inline">\(w\)</span> with finite number of iterations. The update rule is</p>
-<p><span class="math display">\[w(t+1) = w(t) + y(t)x(t)\]</span></p>
-<p>where <span class="math inline">\(y(t)\)</span> is given result scalar value, <span class="math inline">\(x(t)\)</span> is the input vector and <span class="math inline">\(t = 0, 1, 2, \ldots\)</span>.</p>
-<h1 id="references">References</h1>
-<ul>
+<p>where $w \in \mathbb{R}^d$ be the weight vector(classifier), $b$ be the bias, and $\cdot$ denotes the dot product. If input data is <a href="https://en.wikipedia.org/wiki/Linear_separability" target="_blank" rel="external">linearly separable</a>, then there exists a line $x \cdot w + b = 0$ that clearly separates the data into two groups.</p>
+<p>To make the formula even simpler, we can merge the bias term $b$ into the vector $w = [w_0, w_1, \ldots , w_d]$ where $w_0 = b$ and $x = [x_0, x_1, \ldots , x_d]$ where $x_0 = 1$. Then, the function $f(x)$ becomes</p>
+<p>$$f(x) = w^T \cdot x$$</p>
+<p>The Perceptron Learning Algorithm(PLA) finds the weight vector $w$ with finite number of iterations. The update rule is</p>
+<p>$$w(t+1) = w(t) + y(t)x(t)$$</p>
+<p>where $y(t)$ is given result scalar value, $x(t)$ is the input vector and $t = 0, 1, 2, \ldots$.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
 <li><a href="https://en.wikipedia.org/wiki/Linear_separability" target="_blank" rel="external">Linear separability Wiki</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Perceptron" target="_blank" rel="external">Perceptron Wiki</a></li>
 <li>Learning from data</li>
@@ -2238,40 +2240,37 @@ img[alt="otsu_method"] {
   width : 30em;
 }
 </style>
-<h1 id="what-is-it">What is it?</h1>
-<div class="figure">
-<img src="/images/otsu_method/fig1.jpg" alt="otsu_method">
-<p class="caption">otsu_method</p>
-</div>
+
+<h1 id="What-is-it"><a href="#What-is-it" class="headerlink" title="What is it?"></a>What is it?</h1><p><img src="/images/otsu_method/fig1.jpg" alt="otsu_method"></p>
 <p><a href="https://en.wikipedia.org/wiki/Otsu%27s_method" target="_blank" rel="external">Otsu’s Method</a> is one of image thresholding algorithm in computer vision. One assumption that the algorithm requires is that the given image has two separated groups of pixel intensities (foreground and background). Given this condition on the input image, the algorithm tries to find the optimal pixel intensity that clearly separates this two groups. The implementation of the algorithm can be found <a href="https://github.com/munjo5746/algorithm/tree/master/OtsuThresholding" target="_blank" rel="external">here</a>.</p>
-<h1 id="theory-behind-algorithm">Theory behind algorithm</h1>
-<p>Let - the range of intensity value be <span class="math inline">\(0\)</span> ~ <span class="math inline">\(L\)</span>. - <span class="math inline">\(C_i\)</span> where <span class="math inline">\(i \in \\{0, 1\\}\)</span> be two classes for collection of pixel intensities divided by <span class="math inline">\(t\)</span> (Bi-modal assumption) - <span class="math inline">\(\omega_j\)</span> where <span class="math inline">\(j \in \\{0, 1\\}\)</span> be the probability distribution of the pixel intensity within each class - the variances of each class be <span class="math inline">\(\sigma^2_i\)</span>, where <span class="math inline">\(i \in \\{0,1\\}\)</span> - <span class="math inline">\(n\_i\)</span> the number of pixels that has intensity value <span class="math inline">\(i\)</span> and <span class="math inline">\(N\)</span> be the total number of pixels within image, <span class="math inline">\(N=\sum_{i=0}^{L}n_i\)</span>.</p>
-<p>The goal is to find one pixel intensity (threshold) value <span class="math inline">\(t\_{opt}\)</span> that clearly separates <span class="math inline">\(C\_{i}\)</span> into two classes. In order to achieve this, we need a way to represent how far these two classes are separated. The further the two classes are separated the easier to find the optimal value <span class="math inline">\(t\_{opt}\)</span>. The Otsu’s paper uses discriminant criterion measures used in the discriminant analysis, and claims that the simplest formulation is :</p>
-<p><span class="math display">\[
-  \eta = \frac{\sigma_B^2}{\sigma_T^2}
-\]</span></p>
-<p>where inter-class variance (how far between each class is) be <span>$$\begin{aligned}
+<h1 id="Theory-behind-algorithm"><a href="#Theory-behind-algorithm" class="headerlink" title="Theory behind algorithm"></a>Theory behind algorithm</h1><p>Let</p>
+<ul>
+<li>the range of intensity value be $0$ ~ $L$.</li>
+<li>$C_i$ where $i \in \{0, 1\}$ be two classes for collection of pixel intensities divided by $t$ (Bi-modal assumption)</li>
+<li>$\omega_j$ where $j \in \{0, 1\}$ be the probability distribution of the pixel intensity within each class</li>
+<li>the variances of each class be $\sigma^2_i$, where $i \in \{0,1\}$</li>
+<li>$n_i$ the number of pixels that has intensity value $i$ and $N$ be the total number of pixels within image, $N=\sum_{i=0}^{L}n_i$.</li>
+</ul>
+<p>The goal is to find one pixel intensity (threshold) value $t_{opt}$ that clearly separates $C_{i}$ into two classes. In order to achieve this, we need a way to represent how far these two classes are separated. The further the two classes are separated the easier to find the optimal value $t_{opt}$. The Otsu’s paper uses discriminant criterion measures used in the discriminant analysis, and claims that the simplest formulation is :</p>
+<p>$$<br>  \eta = \frac{\sigma_B^2}{\sigma_T^2}<br>$$</p>
+<p>where inter-class variance (how far between each class is) be<br><span>$$\begin{aligned}
 \sigma_B^2 &amp; = \omega_0(\mu_0 - \mu_T)^2 + \omega_1(\mu_1 - \mu_T)^2 \\
            &amp; = \omega_0\omega_1(\mu_1 - \mu_0)^2
 \end{aligned}$$</span><!-- Has MathJax --></p>
 <p>and the total variance be</p>
-<p><span class="math display">\[
-  \sigma\_T^2 = \sum_{i=0}^{L} (i - \mu\_T)^2 \cdot p\_i
-\]</span></p>
-<p>where <span class="math inline">\(p_i\)</span> be normalized probability of intensity <span class="math inline">\(i\)</span>.</p>
-<p>The paper states that <span class="math inline">\(\eta\)</span> is function of intensity <span class="math inline">\(t\)</span> and finding the intensity <span class="math inline">\(t\)</span> will give the optimal threshold value <span class="math inline">\(t\_{opt}\)</span>.</p>
+<p>$$<br>  \sigma_T^2 = \sum_{i=0}^{L} (i - \mu_T)^2 \cdot p_i<br>$$</p>
+<p>where $p_i$ be normalized probability of intensity $i$.</p>
+<p>The paper states that $\eta$ is function of intensity $t$ and finding the intensity $t$ will give the optimal threshold value $t_{opt}$.</p>
 <hr>
-<p>Normalized probability distribution of pixel intensity within image would be : <span class="math display">\[
-  p_i = \frac{n_i}{N}
-\]</span></p>
-<p>where <span class="math inline">\(p\_i \geq 0\)</span> and <span class="math inline">\(\sum\_{i=0}^{L} p\_i = 1\)</span>.</p>
-<p>The class probabilities <span class="math inline">\(\omega_j, j \in \\{0, 1\\}\)</span> are defined as</p>
+<p>Normalized probability distribution of pixel intensity within image would be :<br>$$<br>  p_i = \frac{n_i}{N}<br>$$</p>
+<p>where $p_i \geq 0$ and $\sum_{i=0}^{L} p_i = 1$.</p>
+<p>The class probabilities $\omega_j, j \in \{0, 1\}$ are defined as</p>
 <span>$$\begin{aligned}
   \omega_0 &amp;= p_{C_0} = \sum_{i=0}^{t - 1} p_i = \omega(t) \\
   \omega_1 &amp;= p_{C_1} = \sum_{i=t}^{L} p_i = 1 - \omega(t)
 \end{aligned}$$</span><!-- Has MathJax -->
-<p>The above statement is valid because of <strong>Kolmogorov axioms (Third Axiom)</strong> which says <span class="math inline">\(p\left(\bigcup\_{e \in E} e\right) = \sum\_{e \in E} p(e)\)</span>, and we assumed the probability <span class="math inline">\(p\_i\)</span> is normalized.</p>
-<p>The mean <span class="math inline">\(\mu_i\)</span> where <span class="math inline">\(i \in \\{0, 1\\}\)</span> of each class <span class="math inline">\(C_i\)</span> can be found as follows :</p>
+<p>The above statement is valid because of <strong>Kolmogorov axioms (Third Axiom)</strong> which says $p\left(\bigcup_{e \in E} e\right) = \sum_{e \in E} p(e)$, and we assumed the probability $p_i$ is normalized.</p>
+<p>The mean  $\mu_i$ where $i \in \{0, 1\}$ of each class $C_i$ can be found as follows :</p>
 <span>$$\begin{aligned}
   \mu_0 &amp; = \sum_{i=0}^{t-1} i \cdot \frac{p_i}{\omega_0} = \frac{\mu(t)}{\omega(t)} \\
   \mu_1 &amp; = \sum_{i=t}^{L} i\cdot\frac{p_i}{\omega_1} = \frac{\mu_T - \mu(t)}{1 - \omega(t)}
@@ -2287,19 +2286,22 @@ img[alt="otsu_method"] {
   \sigma_0^2(t) &amp; = \sum_{i=0}^{t-1} [i - \mu_0]^2 \cdot \frac{p_i}{\omega_0} \\
   \sigma_1^2(t) &amp; = \sum_{i=t}^{L} [i - \mu_1]^2 \cdot \frac{p_i}{\omega_1}
 \end{aligned}$$</span><!-- Has MathJax -->
-<p>The goal is to find <span class="math inline">\(t\_{opt}\)</span> that maximize <span class="math inline">\(\eta\)</span>. There are few things that we need to keep in mind. - The variance <span class="math inline">\(\sigma\_B^2\)</span> is function of <span class="math inline">\(t\)</span>, so is the function <span class="math inline">\(\eta\)</span>. - The function <span class="math inline">\(\eta\)</span> increases as <span class="math inline">\(\sigma\_B^2\)</span> increases.</p>
-<p>Then, we have <span class="math inline">\(\eta(t) = \frac{\sigma\_B^2(t)}{\sigma\_T^2}\)</span>, and <span class="math inline">\(\sigma\_B^2(t)\)</span> can be formulated as follow :</p>
+<p>The goal is to find $t_{opt}$ that maximize $\eta$. There are few things that we need to keep in mind.</p>
+<ul>
+<li>The variance $\sigma_B^2$ is function of $t$, so is the function $\eta$.</li>
+<li>The function $\eta$ increases as $\sigma_B^2$ increases.</li>
+</ul>
+<p>Then, we have $\eta(t) = \frac{\sigma_B^2(t)}{\sigma_T^2}$, and $\sigma_B^2(t)$ can be formulated as follow :</p>
 <span>$$\begin{aligned}
 \sigma_B^2(t) &amp;= \omega_0 \omega_1(\mu_1-\mu_0)^2 \\\\
 &amp;= \left[\omega(t) \cdot (1-\omega(t))\right] \cdot \left[\frac{\mu_T \cdot \omega(t)-\mu(t)}{\left[(1-\omega(t)) \cdot \omega(t)\right]}\right]^2 \\
 &amp;=\frac{\left[ \mu_T \cdot \omega(t) - \mu(t) \right]^2}{(1-\omega(t)) \cdot \omega(t)}
 \end{aligned}$$</span><!-- Has MathJax -->
-<p>Since <span class="math inline">\(\eta(t)\)</span> increases as <span class="math inline">\(\sigma\_B^2(t)\)</span> increases, we only have to find <span class="math inline">\(t\_{opt}\)</span> such that</p>
+<p>Since $\eta(t)$ increases as $\sigma_B^2(t)$ increases, we only have to find $t_{opt}$ such that</p>
 <span>$$\begin{aligned}
 t_{opt} = \operatorname{arg\ max}_{0 \leq t \leq L} \sigma_B(t)
 \end{aligned}$$</span><!-- Has MathJax -->
-<h1 id="references">References</h1>
-<ul>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
 <li><a href="https://en.wikipedia.org/wiki/Probability_axioms" target="_blank" rel="external">Kolmogorov axioms</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Otsu%27s_method" target="_blank" rel="external">Wikipedia</a></li>
 <li><a href="http://darkpgmr.tistory.com/115" target="_blank" rel="external">다크 프로그래머</a></li>
@@ -2446,7 +2448,6 @@ t_{opt} = \operatorname{arg\ max}_{0 \leq t \leq L} \sigma_B(t)
         
           
             
-
           
         
       
@@ -2591,17 +2592,22 @@ t_{opt} = \operatorname{arg\ max}_{0 \leq t \leq L} \sigma_B(t)
     width: 20em;
   }
 </style>
-<h1 id="what-is-it">What is it?</h1>
-<div class="figure">
-<img src="/images/tatap/tatap.gif" alt="Tatap GIF">
-<p class="caption">Tatap GIF</p>
-</div>
-<p>Tatap is a android chat app that lets you make pre-defined messages to your friends, and send them with two taps. This app can be useful in a situation where you are in hurry or need to send quick messages. The features it provides are : 1. Pre-defined messages so that you can send them as quickly as possible. 2. You can send messages with Tatap widgets on your phone screen without opening the app. 3. You can send or receive location message that pin points where you or your friend is.</p>
+
+
+<h1 id="What-is-it"><a href="#What-is-it" class="headerlink" title="What is it?"></a>What is it?</h1><p><img src="/images/tatap/tatap.gif" alt="Tatap GIF"></p>
+<p>Tatap is a android chat app that lets you make pre-defined messages to your friends, and send them with two taps. This app can be useful in a situation where you are in hurry or need to send quick messages. The features it provides are :</p>
+<ol>
+<li>Pre-defined messages so that you can send them as quickly as possible.</li>
+<li>You can send messages with Tatap widgets on your phone screen without opening the app.</li>
+<li>You can send or receive location message that pin points where you or your friend is.</li>
+</ol>
 <hr>
-<h1 id="what-was-required">What was required?</h1>
-<p>The project required to have its backend server and mobile application. The backend server was implemented using <strong>Node.js</strong>, and android app was developed. All communication between the mobile app and the server was done with json, and each end-point in the server was well tested. ## Backend (Node.js) - The server was setup on <a href="https://aws.amazon.com" target="_blank" rel="external">AWS</a>. - <a href="https://nginx.org/en/" target="_blank" rel="external">Nginx</a> for reverse-proxy.</p>
-<h2 id="mobile-android">Mobile (Android)</h2>
-<ul>
+<h1 id="What-was-required"><a href="#What-was-required" class="headerlink" title="What was required?"></a>What was required?</h1><p>The project required to have its backend server and mobile application. The backend server was implemented using <strong>Node.js</strong>, and android app was developed. All communication between the mobile app and the server was done with json, and each end-point in the server was well tested.</p>
+<h2 id="Backend-Node-js"><a href="#Backend-Node-js" class="headerlink" title="Backend (Node.js)"></a>Backend (Node.js)</h2><ul>
+<li>The server was setup on <a href="https://aws.amazon.com" target="_blank" rel="external">AWS</a>.</li>
+<li><a href="https://nginx.org/en/" target="_blank" rel="external">Nginx</a> for reverse-proxy.</li>
+</ul>
+<h2 id="Mobile-Android"><a href="#Mobile-Android" class="headerlink" title="Mobile (Android)"></a>Mobile (Android)</h2><ul>
 <li><a href="http://square.github.io/retrofit/" target="_blank" rel="external">Retrofit2</a> was used for REST API communication.</li>
 <li><a href="https://developers.google.com/maps/documentation/android-api/" target="_blank" rel="external">Google map SDK</a> for location message.</li>
 <li><a href="https://www.google.com/analytics/#?modal_active=none" target="_blank" rel="external">Google analytics</a> for app usages.</li>
@@ -2686,10 +2692,10 @@ t_{opt} = \operatorname{arg\ max}_{0 \leq t \leq L} \sigma_B(t)
 
           
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories">
                 <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">categories</span>
-              
+              </a>
             </div>
           
 

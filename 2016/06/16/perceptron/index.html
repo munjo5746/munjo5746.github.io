@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="Perceptron Learning Algorithm(PLA)
-The Perceptron algorithm is a supervised learning algorithm that find a binary classifiers(Yes/No, True/False). Let \(x \in \mathbb{R}^d\) and \(y \in \mathbb{R}\).">
+<meta name="description" content="Perceptron Learning Algorithm(PLA)The Perceptron algorithm is a supervised learning algorithm that find a binary classifiers(Yes/No, True/False). Let $x \in \mathbb{R}^d$ and $y \in \mathbb{R}$. Then,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Perceptron Learning Algorithm">
 <meta property="og:url" content="http://http://munjo5746.github.io/2016/06/16/perceptron/index.html">
 <meta property="og:site_name" content="eChung's Note">
-<meta property="og:description" content="Perceptron Learning Algorithm(PLA)
-The Perceptron algorithm is a supervised learning algorithm that find a binary classifiers(Yes/No, True/False). Let \(x \in \mathbb{R}^d\) and \(y \in \mathbb{R}\).">
+<meta property="og:description" content="Perceptron Learning Algorithm(PLA)The Perceptron algorithm is a supervised learning algorithm that find a binary classifiers(Yes/No, True/False). Let $x \in \mathbb{R}^d$ and $y \in \mathbb{R}$. Then,">
 <meta property="og:updated_time" content="2017-01-25T15:54:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Perceptron Learning Algorithm">
-<meta name="twitter:description" content="Perceptron Learning Algorithm(PLA)
-The Perceptron algorithm is a supervised learning algorithm that find a binary classifiers(Yes/No, True/False). Let \(x \in \mathbb{R}^d\) and \(y \in \mathbb{R}\).">
+<meta name="twitter:description" content="Perceptron Learning Algorithm(PLA)The Perceptron algorithm is a supervised learning algorithm that find a binary classifiers(Yes/No, True/False). Let $x \in \mathbb{R}^d$ and $y \in \mathbb{R}$. Then,">
 
 
 
@@ -197,6 +194,26 @@ The Perceptron algorithm is a supervised learning algorithm that find a binary c
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -346,19 +363,17 @@ The Perceptron algorithm is a supervised learning algorithm that find a binary c
       
 
       
-        <h1 id="perceptron-learning-algorithmpla">Perceptron Learning Algorithm(PLA)</h1>
-<p>The <a href="https://en.wikipedia.org/wiki/Perceptron" target="_blank" rel="external">Perceptron</a> algorithm is a supervised learning algorithm that find a binary classifiers(Yes/No, True/False). Let <span class="math inline">\(x \in \mathbb{R}^d\)</span> and <span class="math inline">\(y \in \mathbb{R}\)</span>. Then, a function that maps <span class="math inline">\(d\)</span> dimensional vector to a single signed value can be defined as follow : <span>$$\begin{aligned}
+        <h1 id="Perceptron-Learning-Algorithm-PLA"><a href="#Perceptron-Learning-Algorithm-PLA" class="headerlink" title="Perceptron Learning Algorithm(PLA)"></a>Perceptron Learning Algorithm(PLA)</h1><p>The <a href="https://en.wikipedia.org/wiki/Perceptron" target="_blank" rel="external">Perceptron</a> algorithm is a supervised learning algorithm that find a binary classifiers(Yes/No, True/False). Let $x \in \mathbb{R}^d$ and $y \in \mathbb{R}$. Then, a function that maps $d$ dimensional vector to a single signed value can be defined as follow :<br><span>$$\begin{aligned}
 f(x) &amp; = \sum_{i=1}^{d}w_i x_i + b \\
      &amp; = w^T \cdot x + b
 \end{aligned}$$</span><!-- Has MathJax --></p>
-<p>where <span class="math inline">\(w \in \mathbb{R}^d\)</span> be the weight vector(classifier), <span class="math inline">\(b\)</span> be the bias, and <span class="math inline">\(\cdot\)</span> denotes the dot product. If input data is <a href="https://en.wikipedia.org/wiki/Linear_separability" target="_blank" rel="external">linearly separable</a>, then there exists a line <span class="math inline">\(x \cdot w + b = 0\)</span> that clearly separates the data into two groups.</p>
-<p>To make the formula even simpler, we can merge the bias term <span class="math inline">\(b\)</span> into the vector <span class="math inline">\(w = [w\_0, w\_1, \ldots , w\_d]\)</span> where <span class="math inline">\(w\_0 = b\)</span> and <span class="math inline">\(x = [x\_0, x\_1, \ldots , x\_d]\)</span> where <span class="math inline">\(x\_0 = 1\)</span>. Then, the function <span class="math inline">\(f(x)\)</span> becomes</p>
-<p><span class="math display">\[f(x) = w^T \cdot x\]</span></p>
-<p>The Perceptron Learning Algorithm(PLA) finds the weight vector <span class="math inline">\(w\)</span> with finite number of iterations. The update rule is</p>
-<p><span class="math display">\[w(t+1) = w(t) + y(t)x(t)\]</span></p>
-<p>where <span class="math inline">\(y(t)\)</span> is given result scalar value, <span class="math inline">\(x(t)\)</span> is the input vector and <span class="math inline">\(t = 0, 1, 2, \ldots\)</span>.</p>
-<h1 id="references">References</h1>
-<ul>
+<p>where $w \in \mathbb{R}^d$ be the weight vector(classifier), $b$ be the bias, and $\cdot$ denotes the dot product. If input data is <a href="https://en.wikipedia.org/wiki/Linear_separability" target="_blank" rel="external">linearly separable</a>, then there exists a line $x \cdot w + b = 0$ that clearly separates the data into two groups.</p>
+<p>To make the formula even simpler, we can merge the bias term $b$ into the vector $w = [w_0, w_1, \ldots , w_d]$ where $w_0 = b$ and $x = [x_0, x_1, \ldots , x_d]$ where $x_0 = 1$. Then, the function $f(x)$ becomes</p>
+<p>$$f(x) = w^T \cdot x$$</p>
+<p>The Perceptron Learning Algorithm(PLA) finds the weight vector $w$ with finite number of iterations. The update rule is</p>
+<p>$$w(t+1) = w(t) + y(t)x(t)$$</p>
+<p>where $y(t)$ is given result scalar value, $x(t)$ is the input vector and $t = 0, 1, 2, \ldots$.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
 <li><a href="https://en.wikipedia.org/wiki/Linear_separability" target="_blank" rel="external">Linear separability Wiki</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Perceptron" target="_blank" rel="external">Perceptron Wiki</a></li>
 <li>Learning from data</li>
@@ -489,10 +504,10 @@ f(x) &amp; = \sum_{i=1}^{d}w_i x_i + b \\
 
           
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories">
                 <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">categories</span>
-              
+              </a>
             </div>
           
 
@@ -554,7 +569,7 @@ f(x) &amp; = \sum_{i=1}^{d}w_i x_i + b \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#perceptron-learning-algorithmpla"><span class="nav-number">1.</span> <span class="nav-text">Perceptron Learning Algorithm(PLA)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Perceptron-Learning-Algorithm-PLA"><span class="nav-number">1.</span> <span class="nav-text">Perceptron Learning Algorithm(PLA)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>
